@@ -6,15 +6,17 @@ const Error = () => {
 
     const path = useNavigate();
     const pathHome = () => {
-        path('/home')
+        path('/');
     }
 
     return (
-        <div>
-            <h1>Error 404</h1>
-            <Button onClick={pathHome}>Go Home</Button>
-            <TbError404 className="w-[400px] h-[400px]" />
-        </div>
+        <>
+            <div className="flex flex-col items-center justify-center w-5/5">
+                <h1 className="mt-6">Error 404</h1>
+                <Button onClick={pathHome}>Go Home</Button>
+                <TbError404 className="w-[400px] h-[200px]" />
+            </div>
+        </>
     )
 }
 

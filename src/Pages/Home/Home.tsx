@@ -1,8 +1,14 @@
-import App from "../../App"
+import Card from "../../components/Card/Card";
 
 const Home = () => {
     return (
-        <App />
+        <>
+            <div className="flex flex-col items-start justify-center gap-4 text-center w-[98vw] h-[150px] dark:text-white border-b-2">
+                <h1 className="text-5xl">cards page</h1>
+                <p className="text-3xl ">here you can find some cards</p>
+            </div>
+            <Card />
+        </>
     )
 }
 
