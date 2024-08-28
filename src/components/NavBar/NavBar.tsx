@@ -8,9 +8,10 @@ const NavBar = () => {
 
     return (
         <Navbar fluid>
-            <Navbar.Brand as={Link} href="https://flowbite-react.com">
-                <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite React</span>
-            </Navbar.Brand>
+            <Navbar.Link as={Link} href="/" to="/" active={loc === '/'} >
+                <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">React Project</span>
+            </Navbar.Link>
+
             <Navbar.Toggle />
             <Navbar.Collapse>
                 <DarkThemeToggle />
@@ -21,6 +22,15 @@ const NavBar = () => {
                 <Navbar.Link as={Link} href="/about" to="/about" active={loc === '/about'}>
                     About
                 </Navbar.Link>
+
+                <Navbar.Link as={Link} href="/register" to="/register" active={loc === '/register'}>
+                    Register
+                </Navbar.Link>
+
+                <Navbar.Link as={Link} href="/login" to="/login" active={loc === '/login'}>
+                    Login
+                </Navbar.Link>
+
                 <Navbar.Brand>
                     <TextInput rightIcon={FaSearch} />
                 </Navbar.Brand>
