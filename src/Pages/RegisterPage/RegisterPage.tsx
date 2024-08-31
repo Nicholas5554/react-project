@@ -1,59 +1,79 @@
 import { useForm } from "react-hook-form";
 import { registerSchema } from "../../components/validations/registerSchema";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { Button, FloatingLabel } from "flowbite-react";
+import { Button, Checkbox, FloatingLabel, Label } from "flowbite-react";
+import axios from "axios";
 
 const RegisterPage = () => {
+    const initialForm = {
+        "name": {
+            "first": "",
+            "middle": "",
+            "last": ""
+        },
+        "phone": "",
+        "email": "",
+        "password": "",
+        "image": {
+            "url": "",
+            "alt": ""
+        },
+        "address": {
+            "state": "",
+            "country": "",
+            "city": "",
+            "street": "",
+            "houseNumber": 0,
+            "zip": 0
+        },
+        "isBusiness": false
+    };
 
-    const registerForm = {
-        firstName: "",
-        lastName: "",
-        phone: "",
-        email: "",
-        password: ""
-    }
-
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        defaultValues: registerForm,
-        mode: 'onChange',
+    const { register, handleSubmit, formState: { errors, isValid } } = useForm({
+        defaultValues: initialForm,
+        mode: "onChange",
         resolver: joiResolver(registerSchema)
     });
 
-    const checkErrors = () => {
-        return (
-            errors.firstName === undefined &&
-            errors.lastName === undefined &&
-            errors.phone === undefined &&
-            errors.email === undefined &&
-            errors.password === undefined
-        );
-    };
+    const submitForm = async (form: any) => {
 
-    const submitForm = (form: any) => {
         console.log(form);
-
+        try {
+            const res = await axios.post("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users", form);
+            console.log(res.data);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
-        <form onSubmit={handleSubmit(submitForm)} className="flex flex-col gap-4 p-4 mt-20 rounded-lg shadow-lg">
+        <form onSubmit={handleSubmit(submitForm)} className="flex flex-col gap-4 p-4 rounded-lg shadow-lg">
 
             <h1 className="text-2xl font-bold dark:text-white">Register</h1>
 
             <FloatingLabel className="dark:text-white"
-                type="firstName"
+                type="text"
                 variant="standard"
                 label="First Name"
-                {...register("firstName")}
+                {...register("name.first")}
             />
-            <span className="text-sm text-red-500">{errors.firstName?.message}</span>
+            <span className="text-sm text-red-500">{errors.name?.first?.message}</span>
 
             <FloatingLabel className="dark:text-white"
-                type="lastName"
+                type="text"
+                variant="standard"
+                label="Middle Name"
+                {...register("name.middle")}
+            />
+            <span className="text-sm text-red-500">{errors.name?.middle?.message}</span>
+
+            <FloatingLabel className="dark:text-white"
+                type="text"
                 variant="standard"
                 label="Last Name"
-                {...register("lastName")}
+                {...register("name.last")}
             />
-            <span className="text-sm text-red-500">{errors.lastName?.message}</span>
+            <span className="text-sm text-red-500">{errors.name?.last?.message}</span>
 
             <FloatingLabel className="dark:text-white"
                 type="phone"
@@ -79,7 +99,75 @@ const RegisterPage = () => {
             />
             <span className="text-sm text-red-500">{errors.password?.message}</span>
 
-            <Button type="submit" disabled={!checkErrors()} className=" dark:text-white">
+            <FloatingLabel className="dark:text-white"
+                type="text"
+                variant="standard"
+                label="image url"
+                {...register("image.url")}
+            />
+            <span className="text-sm text-red-500">{errors.image?.url?.message}</span>
+
+            <FloatingLabel className="dark:text-white"
+                type="text"
+                variant="standard"
+                label="image alt"
+                {...register("image.alt")}
+            />
+            <span className="text-sm text-red-500">{errors.image?.alt?.message}</span>
+
+            <FloatingLabel className="dark:text-white"
+                type="text"
+                variant="standard"
+                label="state"
+                {...register("address.state")}
+            />
+            <span className="text-sm text-red-500">{errors.address?.state?.message}</span>
+
+            <FloatingLabel className="dark:text-white"
+                type="text"
+                variant="standard"
+                label="country"
+                {...register("address.country")}
+            />
+            <span className="text-sm text-red-500">{errors.address?.country?.message}</span>
+
+            <FloatingLabel className="dark:text-white"
+                type="text"
+                variant="standard"
+                label="city"
+                {...register("address.city")}
+            />
+            <span className="text-sm text-red-500">{errors.address?.city?.message}</span>
+
+            <FloatingLabel className="dark:text-white"
+                type="text"
+                variant="standard"
+                label="street"
+                {...register("address.street")}
+            />
+            <span className="text-sm text-red-500">{errors.address?.street?.message}</span>
+
+            <FloatingLabel className="dark:text-white"
+                type="number"
+                variant="standard"
+                label="houseNumber"
+                {...register("address.houseNumber")}
+            />
+            <span className="text-sm text-red-500">{errors.address?.houseNumber?.message}</span>
+
+            <FloatingLabel className="dark:text-white"
+                type="number"
+                variant="standard"
+                label="zip"
+                {...register("address.zip")}
+            />
+            <span className="text-sm text-red-500">{errors.address?.zip?.message}</span>
+
+            <Label htmlFor="isBusiness">is Business?</Label>
+            <Checkbox {...register("isBusiness")} />
+            <span className="text-sm text-red-500">{errors.isBusiness?.message}</span>
+
+            <Button type="submit" disabled={!isValid} className="dark:text-white">
                 Register
             </Button>
 

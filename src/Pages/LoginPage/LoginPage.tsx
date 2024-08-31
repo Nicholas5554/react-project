@@ -2,29 +2,29 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "../../components/validations/loginSchema";
 import { Button, FloatingLabel } from "flowbite-react";
+import axios from "axios";
 
 const LoginPage = () => {
 
     const loginForm = {
-        email: '',
-        password: ''
+        "email": "",
+        "password": "",
     }
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors, isValid } } = useForm({
         defaultValues: loginForm,
         mode: 'onChange',
         resolver: joiResolver(loginSchema)
     });
 
-    const checkErrors = () => {
-        return (
-            errors.email === undefined &&
-            errors.password === undefined
-        )
-    }
+    const submitLogin = async (form: any) => {
+        try {
+            const res = await axios.post("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/login", form);
+            console.log(res.data);
+        } catch (error) {
+            console.log(error);
+        }
 
-    const submitLogin = (form: any) => {
-        console.log(form);
     }
 
     return (
@@ -48,13 +48,12 @@ const LoginPage = () => {
             />
             <span className="text-sm text-red-500">{errors.password?.message}</span>
 
-            <Button type="submit" disabled={!checkErrors()} className="dark:text-white">
+            <Button type="submit" disabled={!isValid} className="dark:text-white">
                 Login
             </Button>
 
         </form>
     )
-
 }
 
 export default LoginPage;
