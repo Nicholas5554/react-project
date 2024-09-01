@@ -8,13 +8,18 @@ const NavBar = () => {
 
     return (
         <Navbar fluid className="list-none ">
-            <Navbar.Link as={Link} href="/" to="/" active={loc === '/'} >
+            <Navbar.Link as={Link} href="/" to="/" active={loc === '/'} className="flex flex-row gap-2">
+                <img src="../public/dark-mouse.jpeg" alt="dark-mouse" className="w-[30px] h-[30px]" />
                 <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">React Project</span>
             </Navbar.Link>
 
             <Navbar.Toggle />
             <Navbar.Collapse>
                 <DarkThemeToggle />
+                <Navbar.Brand>
+                    <TextInput rightIcon={FaSearch} />
+                </Navbar.Brand>
+
                 <Navbar.Link as={Link} href="/" to="/" active={loc === '/'}>
                     Home
                 </Navbar.Link>
@@ -31,9 +36,6 @@ const NavBar = () => {
                     Login
                 </Navbar.Link>
 
-                <Navbar.Brand>
-                    <TextInput rightIcon={FaSearch} />
-                </Navbar.Brand>
             </Navbar.Collapse>
 
         </Navbar>

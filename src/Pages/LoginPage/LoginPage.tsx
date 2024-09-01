@@ -27,7 +27,7 @@ const LoginPage = () => {
                 title: "Welcome Back",
                 text: "successfully Logged In",
                 icon: "success",
-                timer: 1500,
+                timer: 2000,
                 timerProgressBar: true
             })
         } catch (error) {
@@ -37,7 +37,7 @@ const LoginPage = () => {
                     title: "Error",
                     text: "Email or Password Invalid",
                     icon: "error",
-                    timer: 1500,
+                    timer: 2000,
                     timerProgressBar: true
                 })
             } else {
@@ -46,7 +46,7 @@ const LoginPage = () => {
                     title: "Error",
                     text: "Unexpected Error Please Try again",
                     icon: "error",
-                    timer: 1500,
+                    timer: 2000,
                     timerProgressBar: true
                 })
             }

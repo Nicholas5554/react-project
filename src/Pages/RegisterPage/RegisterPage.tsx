@@ -46,7 +46,7 @@ const RegisterPage = () => {
                 title: "Welcome",
                 text: "successfully Registerd",
                 icon: "success",
-                timer: 1500,
+                timer: 2000,
                 timerProgressBar: true
             });
         } catch (error) {
@@ -56,7 +56,7 @@ const RegisterPage = () => {
                     title: "Error",
                     text: "User Already Registerd",
                     icon: "error",
-                    timer: 1500,
+                    timer: 2000,
                     timerProgressBar: true
                 });
             } else {
@@ -65,7 +65,7 @@ const RegisterPage = () => {
                     title: "Error",
                     text: "Unexpected Error Please Try again",
                     icon: "error",
-                    timer: 1500,
+                    timer: 2000,
                     timerProgressBar: true
                 });
             }
