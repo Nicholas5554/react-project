@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { loginSchema } from "../../components/validations/loginSchema";
 import { Button, FloatingLabel } from "flowbite-react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
 
@@ -18,13 +19,22 @@ const LoginPage = () => {
     });
 
     const submitLogin = async (form: any) => {
+
         try {
             const res = await axios.post("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/login", form);
             console.log(res.data);
+            Swal.fire({
+                title: "Welcome Back",
+                text: "successfully Logged In",
+                icon: "success"
+            })
         } catch (error) {
-            console.log(error);
+            if (axios.isAxiosError(error)) {
+                console.log("Error response:", error.response?.data);
+            } else {
+                console.log("Unexpected error:", error);
+            }
         }
-
     }
 
     return (
@@ -55,5 +65,6 @@ const LoginPage = () => {
         </form>
     )
 }
+
 
 export default LoginPage;

@@ -3,6 +3,7 @@ import { registerSchema } from "../../components/validations/registerSchema";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { Button, Checkbox, FloatingLabel, Label } from "flowbite-react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const RegisterPage = () => {
     const initialForm = {
@@ -36,15 +37,34 @@ const RegisterPage = () => {
     });
 
     const submitForm = async (form: any) => {
+        console.log("Form data:", form);
 
-        console.log(form);
         try {
             const res = await axios.post("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users", form);
             console.log(res.data);
+            Swal.fire({
+                title: "Welcome",
+                text: "successfully Registerd",
+                icon: "success"
+            })
         } catch (error) {
-            console.log(error);
+            if (axios.isAxiosError(error)) {
+                console.log("Error response:", error.response?.data);
+                Swal.fire({
+                    title: "Error",
+                    text: "User Already Registerd",
+                    icon: "error"
+                })
+            } else {
+                console.log("Unexpected Error:", error);
+                Swal.fire({
+                    title: "Error",
+                    text: "Unexpected Error Please Try again",
+                    icon: "error"
+                })
+            }
         }
-    }
+    };
 
     return (
         <form onSubmit={handleSubmit(submitForm)} className="flex flex-col gap-4 p-4 rounded-lg shadow-lg">
