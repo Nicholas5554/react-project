@@ -45,23 +45,29 @@ const RegisterPage = () => {
             Swal.fire({
                 title: "Welcome",
                 text: "successfully Registerd",
-                icon: "success"
-            })
+                icon: "success",
+                timer: 1500,
+                timerProgressBar: true
+            });
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 console.log("Error response:", error.response?.data);
                 Swal.fire({
                     title: "Error",
                     text: "User Already Registerd",
-                    icon: "error"
-                })
+                    icon: "error",
+                    timer: 1500,
+                    timerProgressBar: true
+                });
             } else {
                 console.log("Unexpected Error:", error);
                 Swal.fire({
                     title: "Error",
                     text: "Unexpected Error Please Try again",
-                    icon: "error"
-                })
+                    icon: "error",
+                    timer: 1500,
+                    timerProgressBar: true
+                });
             }
         }
     };

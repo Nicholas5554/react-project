@@ -26,13 +26,29 @@ const LoginPage = () => {
             Swal.fire({
                 title: "Welcome Back",
                 text: "successfully Logged In",
-                icon: "success"
+                icon: "success",
+                timer: 1500,
+                timerProgressBar: true
             })
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 console.log("Error response:", error.response?.data);
+                Swal.fire({
+                    title: "Error",
+                    text: "Email or Password Invalid",
+                    icon: "error",
+                    timer: 1500,
+                    timerProgressBar: true
+                })
             } else {
                 console.log("Unexpected error:", error);
+                Swal.fire({
+                    title: "Error",
+                    text: "Unexpected Error Please Try again",
+                    icon: "error",
+                    timer: 1500,
+                    timerProgressBar: true
+                })
             }
         }
     }

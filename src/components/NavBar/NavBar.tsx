@@ -7,7 +7,7 @@ const NavBar = () => {
     const loc = useLocation().pathname;
 
     return (
-        <Navbar fluid>
+        <Navbar fluid className="list-none ">
             <Navbar.Link as={Link} href="/" to="/" active={loc === '/'} >
                 <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">React Project</span>
             </Navbar.Link>
