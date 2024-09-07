@@ -1,6 +1,13 @@
+import { useSelector } from "react-redux";
 import Card from "../../components/Card/Card";
+import { TRootState } from "../../Store/bigPie";
 
 const Home = () => {
+
+    const user = useSelector(
+        (state: TRootState) => state.userSlice
+    )
+
     return (
         <>
             <div className="flex flex-col items-start justify-center gap-4 text-center w-[98vw] h-[150px] dark:text-white border-b-2">

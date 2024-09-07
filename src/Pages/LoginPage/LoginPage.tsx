@@ -4,8 +4,15 @@ import { loginSchema } from "../../components/validations/loginSchema";
 import { Button, FloatingLabel } from "flowbite-react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { userActions } from "../../Store/userSlice";
+import { decode } from "../../Services/tokenService";
 
 const LoginPage = () => {
+
+    const dispatch = useDispatch();
+    const nav = useNavigate();
 
     const loginForm = {
         "email": "",
@@ -20,16 +27,30 @@ const LoginPage = () => {
 
     const submitLogin = async (form: any) => {
 
+
         try {
-            const res = await axios.post("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/login", form);
-            console.log(res.data);
+            const token = await axios.post(
+                "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/login",
+                form,
+            );
+
+            localStorage.setItem("token", token.data);
+            const id = decode(token.data)._id;
+            axios.defaults.headers.common["x-auth-token"] = token.data;
+            const user = await axios.get(
+                "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + id,
+            );
+            dispatch(userActions.login(user.data));
+            console.log(token.data);
             Swal.fire({
                 title: "Welcome Back",
                 text: "successfully Logged In",
                 icon: "success",
                 timer: 2000,
                 timerProgressBar: true
-            })
+            });
+            nav("/");
+
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 console.log("Error response:", error.response?.data);
@@ -39,7 +60,7 @@ const LoginPage = () => {
                     icon: "error",
                     timer: 2000,
                     timerProgressBar: true
-                })
+                });
             } else {
                 console.log("Unexpected error:", error);
                 Swal.fire({
@@ -48,7 +69,7 @@ const LoginPage = () => {
                     icon: "error",
                     timer: 2000,
                     timerProgressBar: true
-                })
+                });
             }
         }
     }
@@ -84,3 +105,4 @@ const LoginPage = () => {
 
 
 export default LoginPage;
+
