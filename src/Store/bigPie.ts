@@ -1,10 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit/react";
 import userSlice from "./userSlice";
+import searchSlice from "./SearchSlice";
 
 
 
 const store = configureStore({
-    reducer: { userSlice },
+    reducer: { userSlice, searchSlice },
     middleware: (getDefaultMiddleware) => {
         return getDefaultMiddleware({
             serializableCheck: false
@@ -12,6 +13,6 @@ const store = configureStore({
     },
 });
 
-const rootReducer = combineReducers({ userSlice });
+const rootReducer = combineReducers({ userSlice, searchSlice });
 export type TRootState = ReturnType<typeof rootReducer>;
 export default store;

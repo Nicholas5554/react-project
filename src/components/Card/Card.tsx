@@ -2,24 +2,17 @@
 import axios from "axios";
 import { Button } from "flowbite-react";
 import { useEffect, useState } from "react";
-
-
-type getCards = {
-    title: string
-    subtitle: string
-    description: string
-    phone: string
-    email: string
-    image: {
-        url: string
-        alt: string
-    }
-}
-
+import { useSelector } from "react-redux";
+import { TRootState } from "../../Store/bigPie";
 
 const Card = () => {
 
-    const [cards, cardsSet] = useState<getCards[]>()
+    const [cards, cardsSet] = useState([]);
+
+    const searchWord = useSelector((state: TRootState) => state.searchSlice.search);
+    const searchCards = () => {
+        return cards?.filter((item: TCard) => item.title.includes(searchWord));
+    }
 
     const fetchCards = async () => {
         try {
@@ -38,9 +31,9 @@ const Card = () => {
     return (
         <div className="flex flex-wrap w-[100vw]  justify-center bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             {
-                cards?.map((item, index) => {
+                searchCards()!.map((item: TCard) => {
                     return (
-                        <div key={index} className="w-[365px]">
+                        <div key={item._id} className="w-[365px]">
                             <a href={item.image.url}>
                                 <img className="rounded-t-lg w-[350px] h-[200px] object-cover" src={item.image.url} alt="" />
                             </a>

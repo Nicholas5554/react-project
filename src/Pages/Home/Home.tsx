@@ -1,12 +1,7 @@
-import { useSelector } from "react-redux";
+
 import Card from "../../components/Card/Card";
-import { TRootState } from "../../Store/bigPie";
 
 const Home = () => {
-
-    const user = useSelector(
-        (state: TRootState) => state.userSlice
-    )
 
     return (
         <>

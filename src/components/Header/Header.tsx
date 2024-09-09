@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TRootState } from "../../Store/bigPie";
 import { userActions } from "../../Store/userSlice";
 import Swal from "sweetalert2";
+import { searchActions } from "../../Store/SearchSlice";
 
 const Header = () => {
 
@@ -24,6 +25,11 @@ const Header = () => {
         nav('/');
     }
 
+    const search = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        dispatch(searchActions.searchWord(value));
+    }
+
     return (
         <Navbar fluid className="list-none ">
             <Navbar.Link as={Link} href="/" to="/" active={loc === '/'} className="flex flex-row gap-2">
@@ -35,7 +41,7 @@ const Header = () => {
             <Navbar.Collapse>
                 <DarkThemeToggle />
                 <Navbar.Brand>
-                    <TextInput rightIcon={FaSearch} />
+                    <TextInput rightIcon={FaSearch} onChange={search} />
                 </Navbar.Brand>
 
                 <Navbar.Link as={Link} href="/" to="/" active={loc === '/'}>
