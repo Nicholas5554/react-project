@@ -4,8 +4,12 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import { Button, Checkbox, FloatingLabel, Label } from "flowbite-react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
+
+    const nav = useNavigate();
+
     const initialForm = {
         "name": {
             "first": "",
@@ -49,6 +53,8 @@ const RegisterPage = () => {
                 timer: 2000,
                 timerProgressBar: true
             });
+            nav("/login");
+
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 console.log("Error response:", error.response?.data);
