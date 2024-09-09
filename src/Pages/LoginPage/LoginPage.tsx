@@ -27,7 +27,6 @@ const LoginPage = () => {
 
     const submitLogin = async (form: any) => {
 
-
         try {
             const token = await axios.post(
                 "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/login",

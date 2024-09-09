@@ -1,10 +1,12 @@
 
 import axios from "axios";
-import { Button } from "flowbite-react";
+/* import { Button } from "flowbite-react"; */
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { TRootState } from "../../Store/bigPie";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { decode } from "../../Services/tokenService";
+import LikeButton from "../LikeButton/LikeButton";
 
 const Card = () => {
 
@@ -32,6 +34,14 @@ const Card = () => {
         }
     }
 
+    const { cardId } = useParams<{ cardId: string }>()
+
+    const likeCards = async () => {
+        const like = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + cardId);
+        localStorage.setItem("like", like.data);
+        axios.defaults.headers.common["x-auth-token"] = like.data;
+    }
+
     useEffect(() => {
         fetchCards();
     }, [])
@@ -55,6 +65,7 @@ const Card = () => {
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                                     </svg>
                                 </Button> */}
+                                <LikeButton />
                             </div>
                         </div>
                     )
