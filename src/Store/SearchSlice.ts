@@ -8,7 +8,7 @@ const initialSearch = {
 const searchSlice = createSlice({
     name: "search",
     initialState: initialSearch,
-    reducers: {
+    reducers: { //actions
         searchWord: (state: TSearchState, action: PayloadAction<string>) => {
             state.search = action.payload;
         }

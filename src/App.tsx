@@ -11,6 +11,7 @@ import Profile from "./Pages/Profile/Profile";
 import RouteGuard from "./components/Shared/RouteGuard";
 import { useSelector } from "react-redux";
 import { TRootState } from "./Store/bigPie";
+import CardDetails from "./Pages/CardDetails/CardDetails";
 
 const App = () => {
 
@@ -32,10 +33,10 @@ const App = () => {
             </RouteGuard>} />
 
           <Route path="/register" element={<RegisterPage />} />
-
           <Route path="/login" element={<LoginPage />} />
-
           <Route path="/*" element={<Error />} />
+          <Route path="/card/:id" element={<CardDetails />} />
+
         </Routes>
       </main>
       <Footer />

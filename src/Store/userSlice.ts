@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TUser } from "../Types/TUser";
 
-
-
 const initialUser = {
     isLoggedIn: false,
     userName: "",
