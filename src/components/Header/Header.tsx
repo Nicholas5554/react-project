@@ -15,14 +15,26 @@ const Header = () => {
     const nav = useNavigate();
 
     const logout = () => {
-        dispatch(userActions.logout());
         Swal.fire({
-            title: "see you soon",
-            icon: "info",
-            timer: 2000,
-            timerProgressBar: true
+            title: "Are you sure?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, log me out"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Logged out",
+                    icon: "success",
+                    confirmButtonColor: "#3085d6",
+                    timer: 1500,
+                    timerProgressBar: true,
+                });
+                dispatch(userActions.logout());
+                nav('/');
+            }
         });
-        nav('/');
     }
 
     const search = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,7 +83,7 @@ const Header = () => {
                 )}
 
                 {user && (
-                    <Navbar.Link className="text-white cursor-pointer" onClick={logout}>
+                    <Navbar.Link className="cursor-pointer dark:text-white" onClick={logout}>
                         Logout
                     </Navbar.Link>
                 )}

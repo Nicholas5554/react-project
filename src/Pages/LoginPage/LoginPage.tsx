@@ -46,7 +46,8 @@ const LoginPage = () => {
                 text: "successfully Logged In",
                 icon: "success",
                 timer: 2000,
-                timerProgressBar: true
+                timerProgressBar: true,
+                confirmButtonColor: "#3085d6",
             });
             nav("/");
 
@@ -58,7 +59,8 @@ const LoginPage = () => {
                     text: "Email or Password Invalid",
                     icon: "error",
                     timer: 2000,
-                    timerProgressBar: true
+                    timerProgressBar: true,
+                    confirmButtonColor: "#3085d6",
                 });
             } else {
                 console.log("Unexpected error:", error);
@@ -67,7 +69,8 @@ const LoginPage = () => {
                     text: "Unexpected Error Please Try again",
                     icon: "error",
                     timer: 2000,
-                    timerProgressBar: true
+                    timerProgressBar: true,
+                    confirmButtonColor: "#3085d6",
                 });
             }
         }
