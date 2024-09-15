@@ -56,6 +56,10 @@ const Header = () => {
                     Profile
                 </Navbar.Link>)}
 
+                {user && (<Navbar.Link as={Link} href="/favorites" to="/favorites" active={loc === '/favorites'}>
+                    Favorites
+                </Navbar.Link>)}
+
                 {!user && (<Navbar.Link as={Link} href="/register" to="/register" active={loc === '/register'}>
                     Register
                 </Navbar.Link>)}

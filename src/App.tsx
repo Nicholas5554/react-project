@@ -12,6 +12,7 @@ import RouteGuard from "./components/Shared/RouteGuard";
 import { useSelector } from "react-redux";
 import { TRootState } from "./Store/bigPie";
 import CardDetails from "./Pages/CardDetails/CardDetails";
+import Favorites from "./Pages/Favorites/Favorites";
 
 const App = () => {
 
@@ -31,6 +32,8 @@ const App = () => {
             <RouteGuard user={user!}>
               <Profile />
             </RouteGuard>} />
+
+          <Route path="/favorites" element={<Favorites />} />
 
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />

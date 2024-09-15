@@ -1,18 +1,13 @@
-
 import axios from "axios";
-/* import { Button } from "flowbite-react"; */
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { TRootState } from "../../Store/bigPie";
-import { useNavigate } from "react-router-dom";
-/* import { decode } from "../../Services/tokenService"; */
+import { useState, useEffect } from "react";
 import { FaHeart } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { TRootState } from "../../Store/bigPie";
 import Swal from "sweetalert2";
-/* import Swal from "sweetalert2"; */
 
 
-const Card = () => {
-
+const Favorites = () => {
     const nav = useNavigate();
 
     const [cards, cardsSet] = useState<TCard[]>([]);
@@ -21,7 +16,7 @@ const Card = () => {
     const user = useSelector((state: TRootState) => state.userSlice)
 
     const searchCards = () => {
-        return cards?.filter((item: TCard) => item.title.includes(searchWord.toLocaleLowerCase()));
+        return cards?.filter((item: TCard) => item.title.includes(searchWord.toLocaleLowerCase()) && item.likes.includes(user.user!._id));
     }
 
     const likedCard = (card: TCard) => {
@@ -68,14 +63,15 @@ const Card = () => {
             if (isLiked) {
                 newCards[cardIndex].likes.splice(cardIndex);
                 ToastSweet.fire({
-                    title: 'Card Disliked',
+                    title: 'Card disliked',
                     icon: 'warning',
                     toast: true,
                 });
+
             } else {
                 newCards[cardIndex].likes.push(user.user!._id);
                 ToastSweet.fire({
-                    title: 'Card Liked',
+                    title: 'Card liked',
                     icon: 'success',
                     toast: true,
                 });
@@ -83,6 +79,8 @@ const Card = () => {
             cardsSet(newCards);
         }
     }
+
+    /*     const { cardId } = useParams<{ cardId: string }>() */
 
     useEffect(() => {
         fetchCards();
@@ -109,7 +107,6 @@ const Card = () => {
                                     color={likedCard(card) ? "red" : "#575f69"}
                                     onClick={() => likeDislikeCard(card)}
                                 />}
-
                             </div>
                         </div>
                     )
@@ -119,4 +116,4 @@ const Card = () => {
     )
 }
 
-export default Card;
+export default Favorites;
