@@ -83,7 +83,7 @@ const Header = () => {
                 )}
 
                 {user && (
-                    <Navbar.Link className="cursor-pointer dark:text-white" onClick={logout}>
+                    <Navbar.Link className="cursor-pointer" onClick={logout}>
                         Logout
                     </Navbar.Link>
                 )}
