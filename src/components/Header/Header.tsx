@@ -33,9 +33,9 @@ const Header = () => {
                 });
                 dispatch(userActions.logout());
                 nav('/');
-            }
+            };
         });
-    }
+    };
 
     const search = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;

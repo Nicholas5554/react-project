@@ -51,7 +51,8 @@ const RegisterPage = () => {
                 text: "successfully Registerd",
                 icon: "success",
                 timer: 2000,
-                timerProgressBar: true
+                timerProgressBar: true,
+                confirmButtonColor: "#3085d6",
             });
             nav("/login");
 
@@ -63,7 +64,8 @@ const RegisterPage = () => {
                     text: "User Already Registerd",
                     icon: "error",
                     timer: 2000,
-                    timerProgressBar: true
+                    timerProgressBar: true,
+                    confirmButtonColor: "#3085d6",
                 });
             } else {
                 console.log("Unexpected Error:", error);
@@ -72,7 +74,8 @@ const RegisterPage = () => {
                     text: "Unexpected Error Please Try again",
                     icon: "error",
                     timer: 2000,
-                    timerProgressBar: true
+                    timerProgressBar: true,
+                    confirmButtonColor: "#3085d6",
                 });
             }
         }
