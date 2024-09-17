@@ -45,7 +45,7 @@ const LoginPage = () => {
                 title: "Welcome Back",
                 text: "successfully Logged In",
                 icon: "success",
-                timer: 2000,
+                timer: 1500,
                 timerProgressBar: true,
                 confirmButtonColor: "#3085d6",
             });

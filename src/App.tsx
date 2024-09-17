@@ -13,6 +13,8 @@ import { useSelector } from "react-redux";
 import { TRootState } from "./Store/bigPie";
 import CardDetails from "./Pages/CardDetails/CardDetails";
 import Favorites from "./Pages/Favorites/Favorites";
+import Mycards from "./Pages/MyCards/MyCards";
+import CreateCard from "./Pages/CreateCard/CreateCard";
 
 const App = () => {
 
@@ -29,6 +31,21 @@ const App = () => {
           <Route path="/about" element={<About />} />
 
           <Route path="/profile" element={
+            <RouteGuard user={user!}>
+              <Profile />
+            </RouteGuard>} />
+
+          <Route path="/mycards" element={
+            <RouteGuard user={user!}>
+              <Mycards />
+            </RouteGuard>} />
+
+          <Route path="/createcard" element={
+            <RouteGuard user={user!}>
+              <CreateCard />
+            </RouteGuard>} />
+
+          <Route path="/createcard" element={
             <RouteGuard user={user!}>
               <Profile />
             </RouteGuard>} />

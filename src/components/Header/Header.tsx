@@ -72,6 +72,10 @@ const Header = () => {
                     Favorites
                 </Navbar.Link>)}
 
+                {user?.isBusiness && (<Navbar.Link as={Link} href="/mycards" to="/mycards" active={loc === '/mycards'}>
+                    My cards
+                </Navbar.Link>)}
+
                 {!user && (<Navbar.Link as={Link} href="/register" to="/register" active={loc === '/register'}>
                     Register
                 </Navbar.Link>)}

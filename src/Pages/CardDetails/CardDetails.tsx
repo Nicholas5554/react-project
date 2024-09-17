@@ -17,7 +17,7 @@ const CardDetails = () => {
     }, [])
 
     return (
-        <div className="flex flex-col items-center justify-start gap-4 dark:text-white w-[100vw] h-[100vh]">
+        <div className="flex flex-col items-center justify-start gap-4 dark:text-white w-[90vw] h-[100vh]">
             <h1>{card && card?.title!}</h1>
             <img src={card?.image.url} alt={card?.image.alt} className="w-2/5 h-1/2" />
             <h3> {card && card?.subtitle!}</h3>
