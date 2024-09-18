@@ -109,8 +109,8 @@ const Mycards = () => {
         }
     };
 
-    const editCard = () => {
-
+    const editCard = (card: TCard) => {
+        nav(`/editcard/${card._id}`);
     }
 
 
@@ -165,6 +165,7 @@ const Mycards = () => {
                             <FaPencil
                                 size={30}
                                 className="m-auto cursor-pointer"
+                                onClick={() => editCard(item)}
                             />
                             <FaTrash
                                 size={30}

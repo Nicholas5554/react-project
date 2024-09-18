@@ -15,6 +15,7 @@ import CardDetails from "./Pages/CardDetails/CardDetails";
 import Favorites from "./Pages/Favorites/Favorites";
 import Mycards from "./Pages/MyCards/MyCards";
 import CreateCard from "./Pages/CreateCard/CreateCard";
+import EditCard from "./Pages/EditCard/EditCard";
 
 const App = () => {
 
@@ -43,6 +44,11 @@ const App = () => {
           <Route path="/createcard" element={
             <RouteGuard user={user!}>
               <CreateCard />
+            </RouteGuard>} />
+
+          <Route path="/editcard/:id" element={
+            <RouteGuard user={user!}>
+              <EditCard />
             </RouteGuard>} />
 
           <Route path="/createcard" element={
