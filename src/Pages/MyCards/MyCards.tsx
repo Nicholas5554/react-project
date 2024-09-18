@@ -41,9 +41,6 @@ const Mycards = () => {
     const likeUnlikeCard = async (card: TCard) => {
         const res = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + card._id);
         if (res.status === 200) {
-
-
-
             const index = cards.indexOf(card);
             const ifLiked = cards[index].likes.includes(user.user!._id);
             const newCards = [...cards];
@@ -148,7 +145,7 @@ const Mycards = () => {
             <p className="text-lg">Welcome My cards</p>
             {user.isLoggedIn && <p className="text-lg">Made by you</p>}
 
-            <div className="flex flex-wrap w-4/5 m-auto">
+            <div className="flex flex-wrap w-1/1 ">
                 {searchCards().map((item: TCard) => {
                     return (
                         <Card key={item._id} className="flex flex-row items-center justify-center">
