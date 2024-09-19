@@ -47,7 +47,7 @@ const RegisterPage = () => {
             const res = await axios.post("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users", form);
             console.log(res.data);
             Swal.fire({
-                title: "Welcome",
+                title: `Welcome ${form.name.first} ${form.name.last}`,
                 text: "successfully Registerd",
                 icon: "success",
                 timer: 2000,
