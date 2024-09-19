@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { userActions } from "../../Store/userSlice";
 import { decode } from "../../Services/tokenService";
 
+
 const LoginPage = () => {
 
     const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const LoginPage = () => {
             dispatch(userActions.login(user.data));
             console.log(token.data);
             Swal.fire({
-                title: "Welcome Back",
+                title: `welcome back ${user.data.name.first}`,
                 text: "successfully Logged In",
                 icon: "success",
                 timer: 1500,

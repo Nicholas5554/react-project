@@ -25,7 +25,7 @@ const Header = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
-                    title: "Logged out",
+                    title: "Successfully logged out",
                     icon: "success",
                     confirmButtonColor: "#3085d6",
                     timer: 1500,
