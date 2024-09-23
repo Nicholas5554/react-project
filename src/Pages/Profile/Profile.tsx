@@ -21,11 +21,18 @@ const Profile = () => {
             <br />
             <h2 className="font-bold text-teal-500">Features</h2>
             <ul>
-                <li>Create custom cards with attributes like names, images, and descriptions.</li>
+                {user?.isBusiness && user.isAdmin &&
+                    <li>Create custom cards with attributes like names, images, and descriptions.</li>}
+
                 <li>View a collection of cards created by other users and get inspired.</li>
-                <li>Edit or delete your cards at any time to keep your collection updated.</li>
+
+                {user?.isBusiness && user.isAdmin &&
+                    <li>Edit or delete your cards at any time to keep your collection updated.</li>}
+
                 <li>Explore a wide variety of cards created using the API.</li>
-                <li>Responsive design, allowing you to create and manage cards on both desktop and mobile devices.</li>
+
+                {user?.isBusiness && user.isAdmin &&
+                    <li>Responsive design, allowing you to create and manage cards on both desktop and mobile devices.</li>}
             </ul>
             <br />
             <h2 className="font-bold text-teal-500">Technologies Used</h2>
@@ -35,8 +42,7 @@ const Profile = () => {
             <ul>
                 <li><strong>React:</strong> For building the interactive user interface.</li>
                 <li><strong>API Integration:</strong> To allow dynamic card creation with custom attributes.</li>
-                <li><strong>CSS/Sass:</strong> For styling the components and making the UI visually appealing.</li>
-                <li><strong>Bootstrap:</strong> For responsive design and easy layout management.</li>
+                <li><strong>Tailwind:</strong> For styling the components and making the UI visually appealing.</li>
             </ul>
             <br />
             <h2 className="font-bold text-teal-500">How It Works</h2>
