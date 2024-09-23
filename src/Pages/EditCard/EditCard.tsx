@@ -14,7 +14,7 @@ const EditCard = () => {
 
     const nav = useNavigate();
 
-    const initialFromData = {
+    const initialFormData = {
         "title": cards?.title,
         "subtitle": cards?.subtitle,
         "description": cards?.description,
@@ -36,23 +36,35 @@ const EditCard = () => {
     }
 
     const { register, handleSubmit, formState: { errors, isValid }, reset } = useForm({
-        defaultValues: initialFromData,
+        defaultValues: initialFormData,
         mode: "onChange",
         resolver: joiResolver(editCardSchema)
     });
 
     useEffect(() => {
         if (cards) {
-            reset(initialFromData);
+            reset(initialFormData);
         }
     }, [cards, reset]);
 
     const getData = async () => {
-        const res = await axios.get("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + id);
-        setCards(res.data);
+        try {
+            const res = await axios.get("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + id);
+            setCards(res.data);
+        } catch (err) {
+            console.log("error:", err);
+            Swal.fire({
+                title: "error",
+                text: "could not get the data",
+                icon: "error",
+                confirmButtonColor: '#3085d6',
+                timer: 1500,
+                timerProgressBar: true
+            })
+        }
     }
 
-    const onSubmit = async (form: typeof initialFromData) => {
+    const onSubmit = async (form: typeof initialFormData) => {
         try {
             axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
             const res = await axios.put("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + cards?._id, form);

@@ -39,27 +39,38 @@ const Mycards = () => {
     };
 
     const likeUnlikeCard = async (card: TCard) => {
-        const res = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + card._id);
-        if (res.status === 200) {
-            const index = cards.indexOf(card);
-            const ifLiked = cards[index].likes.includes(user.user!._id);
-            const newCards = [...cards];
-            if (ifLiked) {
-                newCards[index].likes.splice(index);
-                ToastSweet.fire({
-                    title: 'Card Disliked',
-                    icon: 'warning',
-                    toast: true,
-                });
-            } else {
-                newCards[index].likes.push(user.user!._id);
-                ToastSweet.fire({
-                    title: 'Card Liked',
-                    icon: 'success',
-                    toast: true,
-                });
+        try {
+            const res = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + card._id);
+            if (res.status === 200) {
+                const index = cards.indexOf(card);
+                const ifLiked = cards[index].likes.includes(user.user!._id);
+                const newCards = [...cards];
+                if (ifLiked) {
+                    newCards[index].likes.splice(index);
+                    ToastSweet.fire({
+                        title: 'Card Disliked',
+                        icon: 'warning',
+                        toast: true,
+                    });
+                } else {
+                    newCards[index].likes.push(user.user!._id);
+                    ToastSweet.fire({
+                        title: 'Card Liked',
+                        icon: 'success',
+                        toast: true,
+                    });
+                }
+                setCards(newCards);
             }
-            setCards(newCards);
+        } catch (err) {
+            console.log("error: ", err);
+            Swal.fire({
+                title: "Error",
+                text: "unxpected error",
+                icon: "error",
+                timer: 1500,
+                timerProgressBar: true
+            })
         }
     };
 
