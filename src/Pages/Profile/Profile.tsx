@@ -21,17 +21,17 @@ const Profile = () => {
             <br />
             <h2 className="font-bold text-teal-500">Features</h2>
             <ul>
-                {user?.isBusiness && user.isAdmin &&
+                {user?.isBusiness &&
                     <li>Create custom cards with attributes like names, images, and descriptions.</li>}
 
                 <li>View a collection of cards created by other users and get inspired.</li>
 
-                {user?.isBusiness && user.isAdmin &&
+                {user?.isBusiness &&
                     <li>Edit or delete your cards at any time to keep your collection updated.</li>}
 
                 <li>Explore a wide variety of cards created using the API.</li>
 
-                {user?.isBusiness && user.isAdmin &&
+                {user?.isBusiness &&
                     <li>Responsive design, allowing you to create and manage cards on both desktop and mobile devices.</li>}
             </ul>
             <br />
