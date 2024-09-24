@@ -151,7 +151,7 @@ const Mycards = () => {
 
 
     return (
-        <div className="flex flex-col items-center justify-start gap-2 dark:text-white">
+        <div className="flex flex-col items-center justify-start gap-2 text-center dark:text-white">
             <h1 className="text-2xl">My Cards</h1>
             <p className="text-lg">Welcome My cards</p>
             {user.isLoggedIn && <p className="text-lg">Made by you</p>}
