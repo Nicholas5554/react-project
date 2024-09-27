@@ -18,6 +18,7 @@
     "@reduxjs/toolkit": "^2.2.7",
     "@sweetalert2/themes": "^5.0.18",
     "axios": "^0.27.2",
+    "caniuse-lite": "^1.0.30001664",
     "flowbite-react": "^0.8.0",
     "joi": "^17.13.3",
     "jwt-decode": "^4.0.0",

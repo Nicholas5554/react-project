@@ -1,12 +1,19 @@
 import { useSelector } from "react-redux";
 import { TRootState } from "../../Store/bigPie";
+import { Button } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
 
     const user = useSelector((state: TRootState) => state.userSlice.user);
 
+    const nav = useNavigate();
+    const navToChange = () => {
+        nav("/edituser/" + user?._id);
+    }
+
     return (
-        <div className="text-center dark:text-white w-[90vw]">
+        <div className="text-center dark:text-white w-[90vw] flex flex-col justify-center items-center gap-2">
 
             <h1 className="text-3xl font-bold text-teal-500">Profile Page</h1>
             <br />
@@ -55,6 +62,8 @@ const Profile = () => {
                 This project is perfect for anyone interested in learning API integration or practicing React. It demonstrates how to
                 manage dynamic content in a user-friendly and engaging way.
             </p>
+
+            <Button onClick={navToChange} className="w-48 mt-5">To Change your information</Button>
         </div>
 
     )

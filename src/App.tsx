@@ -16,6 +16,7 @@ import Favorites from "./Pages/Favorites/Favorites";
 import Mycards from "./Pages/MyCards/MyCards";
 import CreateCard from "./Pages/CreateCard/CreateCard";
 import EditCard from "./Pages/EditCard/EditCard";
+import EditUserDetails from "./Pages/EditUserDetails/EditUserDetails";
 
 const App = () => {
 
@@ -51,9 +52,9 @@ const App = () => {
               <EditCard />
             </RouteGuard>} />
 
-          <Route path="/createcard" element={
+          <Route path="/edituser/:id" element={
             <RouteGuard user={user!}>
-              <Profile />
+              <EditUserDetails />
             </RouteGuard>} />
 
           <Route path="/favorites" element={<Favorites />} />
