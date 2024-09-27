@@ -6,6 +6,9 @@ import { TRootState } from "../../Store/bigPie";
 import { userActions } from "../../Store/userSlice";
 import Swal from "sweetalert2";
 import { searchActions } from "../../Store/SearchSlice";
+import { useEffect } from "react";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const Header = () => {
 
@@ -41,6 +44,45 @@ const Header = () => {
         const value = e.target.value;
         dispatch(searchActions.searchWord(value));
     }
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const token = localStorage.getItem("token");
+                if (token) {
+                    axios.defaults.headers.common["x-auth-token"] = token;
+                    const decodedToken = jwtDecode(token) as { _id: string };
+                    const response = await axios.get(
+                        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + decodedToken._id
+                    );
+
+                    const ToastSweet = Swal.mixin({
+                        toast: true,
+                        position: "top-right",
+                        customClass: {
+                            popup: 'colored-toast',
+                        },
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    });
+
+                    dispatch(userActions.login(response.data));
+                    ToastSweet.fire({
+                        title: "a good refresh",
+                        icon: "success",
+                        timer: 1500,
+                        timerProgressBar: true,
+                        toast: true,
+                        position: "top-right",
+                    });
+                }
+            } catch (error) {
+                console.error("Failed to fetch user data:", error);
+            }
+        };
+        fetchUser();
+    }, [dispatch]);
 
     return (
         <Navbar fluid className="list-none ">

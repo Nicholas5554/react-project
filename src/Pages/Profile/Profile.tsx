@@ -63,7 +63,7 @@ const Profile = () => {
                 manage dynamic content in a user-friendly and engaging way.
             </p>
 
-            <Button onClick={navToChange} className="w-48 mt-5">To Change your information</Button>
+            <Button onClick={navToChange} className="mt-5 w-58">To Change your information</Button>
         </div>
 
     )
