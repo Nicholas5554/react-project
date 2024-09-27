@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TUser } from "../Types/TUser";
-import Swal from "sweetalert2";
 
 const initialUser = {
     isLoggedIn: false,

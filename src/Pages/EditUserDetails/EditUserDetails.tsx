@@ -77,13 +77,13 @@ const EditUserDetails = () => {
 
             Swal.fire({
                 title: "success",
-                text: "user updated successfully",
+                text: "user info updated successfully",
                 icon: "success",
                 confirmButtonColor: '#3085d6',
                 timer: 1500,
                 timerProgressBar: true
             });
-            nav("/profile")
+            nav("/profile");
         } catch (error) {
             console.log(`error:`, error);
             Swal.fire({
@@ -97,9 +97,54 @@ const EditUserDetails = () => {
         }
     }
 
+    const patchBusinessStatus = async () => {
+        Swal.fire({
+            title: "Are you sure?",
+            icon: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: `change your status to ${!userInfo?.isBusiness ? "business" : "personal"}`
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+
+                try {
+                    axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
+                    const res = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + userInfo?._id, { business: !userInfo?.isBusiness });
+                    console.log(res.data);
+
+                    Swal.fire({
+                        title: "success",
+                        text: "business status updated successfully",
+                        icon: "success",
+                        confirmButtonColor: '#3085d6',
+                        timer: 1500,
+                        timerProgressBar: true
+                    });
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 1500);
+                } catch (error) {
+                    console.log(`error:`, error);
+                    Swal.fire({
+                        title: "error",
+                        text: "error updating business status",
+                        icon: "error",
+                        confirmButtonColor: '#3085d6',
+                        timer: 1500,
+                        timerProgressBar: true
+                    })
+                }
+
+            };
+        });
+
+    }
+
     useEffect(() => {
         getData();
     }, [id]);
+
 
 
     return (
@@ -230,6 +275,10 @@ const EditUserDetails = () => {
 
             <Button type="submit" disabled={!isValid} className="dark:text-white">
                 Save Changes
+            </Button>
+
+            <Button className=" dark:text-white" onClick={patchBusinessStatus}>
+                Change business status?
             </Button>
 
         </form>

@@ -42,10 +42,10 @@ const App = () => {
               <Mycards />
             </RouteGuard>} />
 
-          <Route path="/createcard" element={
+          {user?.isBusiness && <Route path="/createcard" element={
             <RouteGuard user={user!}>
               <CreateCard />
-            </RouteGuard>} />
+            </RouteGuard>} />}
 
           <Route path="/editcard/:id" element={
             <RouteGuard user={user!}>

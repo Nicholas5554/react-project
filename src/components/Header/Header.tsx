@@ -57,26 +57,8 @@ const Header = () => {
                         "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + decodedToken._id
                     );
 
-                    const ToastSweet = Swal.mixin({
-                        toast: true,
-                        position: "top-right",
-                        customClass: {
-                            popup: 'colored-toast',
-                        },
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true,
-                    });
-
                     dispatch(userActions.login(response.data));
-                    ToastSweet.fire({
-                        title: "a good refresh",
-                        icon: "success",
-                        timer: 1500,
-                        timerProgressBar: true,
-                        toast: true,
-                        position: "top-right",
-                    });
+                    ;
                 }
             } catch (error) {
                 console.error("Failed to fetch user data:", error);

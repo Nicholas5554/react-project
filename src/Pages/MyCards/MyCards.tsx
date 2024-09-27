@@ -184,12 +184,12 @@ const Mycards = () => {
                     )
                 })}
             </div>
-            <div className="flex bg-gray-500 rounded-full cursor-pointer">
+            {user.user?.isBusiness && <div className="flex bg-gray-500 rounded-full cursor-pointer">
                 <BiPlus
                     size={30}
                     onClick={navToCreateCard}
                 />
-            </div>
+            </div>}
         </div>
     );
 };
