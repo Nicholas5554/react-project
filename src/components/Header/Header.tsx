@@ -34,6 +34,7 @@ const Header = () => {
                     timer: 1500,
                     timerProgressBar: true,
                 });
+                localStorage.removeItem("token");
                 dispatch(userActions.logout());
                 nav('/');
             };

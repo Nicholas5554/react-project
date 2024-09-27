@@ -41,7 +41,6 @@ const LoginPage = () => {
                 "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + id,
             );
             dispatch(userActions.login(user.data));
-            console.log(token.data);
             Swal.fire({
                 title: `welcome back ${user.data.name.first}`,
                 text: "successfully Logged In",
