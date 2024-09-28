@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
+
 const Header = () => {
 
     const loc = useLocation().pathname;
@@ -56,7 +57,6 @@ const Header = () => {
                     const response = await axios.get(
                         "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + decodedToken._id
                     );
-
                     dispatch(userActions.login(response.data));
                     ;
                 }

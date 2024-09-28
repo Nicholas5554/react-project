@@ -7,12 +7,15 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import { FloatingLabel, Button } from "flowbite-react";
 import { TUser } from "../../Types/TUser";
 import { editUserSchema } from "../../components/validations/editUserSchema";
+import { useDispatch } from "react-redux";
+import { userActions } from "../../Store/userSlice";
 
 
 const EditUserDetails = () => {
 
     const [userInfo, setUserInfo] = useState<TUser>();
     const { id } = useParams<{ id: string }>();
+    const dispatch = useDispatch();
 
     const nav = useNavigate();
 
@@ -98,6 +101,7 @@ const EditUserDetails = () => {
     }
 
     const patchBusinessStatus = async () => {
+
         Swal.fire({
             title: "Are you sure?",
             icon: "info",
@@ -121,9 +125,6 @@ const EditUserDetails = () => {
                         timer: 1500,
                         timerProgressBar: true
                     });
-                    setTimeout(() => {
-                        window.location.reload()
-                    }, 1500);
                 } catch (error) {
                     console.log(`error:`, error);
                     Swal.fire({
@@ -138,6 +139,52 @@ const EditUserDetails = () => {
 
             };
         });
+    }
+
+    const deleteUser = () => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            icon: "warning",
+            text: "your account will be deleted",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "yes delete my account"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
+                    const res = await axios.delete("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + userInfo?._id);
+                    console.log(res.data);
+                    dispatch(userActions.logout());
+                    localStorage.removeItem("token");
+
+                    Swal.fire({
+                        title: "success",
+                        text: "account deleted",
+                        icon: "success",
+                        confirmButtonColor: '#3085d6',
+                        timer: 1500,
+                        timerProgressBar: true
+                    });
+                    nav("/")
+                } catch (error) {
+                    console.log(`error:`, error);
+                    Swal.fire({
+                        title: "error",
+                        text: "error deleting account try again",
+                        icon: "error",
+                        confirmButtonColor: '#3085d6',
+                        timer: 1500,
+                        timerProgressBar: true
+                    })
+                }
+
+            };
+        });
+
+
 
     }
 
@@ -153,124 +200,147 @@ const EditUserDetails = () => {
             <h1 className="text-2xl font-bold dark:text-white">Edit User Details</h1>
 
             <div className="flex flex-row gap-6 m-auto w-max">
-                <FloatingLabel className="dark:text-white"
-                    type="text"
-                    variant="standard"
-                    label="First Name"
-                    defaultValue={userInfo?.name.first}
-                    {...register("name.first")}
-                />
-                <span className="text-sm text-red-500">{errors.name?.first?.message}</span>
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="text"
+                        variant="standard"
+                        label="First Name"
+                        defaultValue={userInfo?.name.first}
+                        {...register("name.first")}
+                    />
+                    <span className="text-sm text-red-500">{errors.name?.first?.message}</span>
+                </div>
 
-
-                <FloatingLabel className="dark:text-white"
-                    type="text"
-                    variant="standard"
-                    label="Middle Name"
-                    defaultValue={userInfo?.name.middle}
-                    {...register("name.middle")}
-                />
-                <span className="text-sm text-red-500">{errors.name?.middle?.message}</span>
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="text"
+                        variant="standard"
+                        label="Middle Name"
+                        defaultValue={userInfo?.name.middle}
+                        {...register("name.middle")}
+                    />
+                    <span className="text-sm text-red-500">{errors.name?.middle?.message}</span>
+                </div>
             </div>
 
             <div className="flex flex-row gap-6 m-auto w-max">
-                <FloatingLabel className="dark:text-white"
-                    type="text"
-                    variant="standard"
-                    label="Last Name"
-                    defaultValue={userInfo?.name.last}
-                    {...register("name.last")}
-                />
-                <span className="text-sm text-red-500">{errors.name?.last?.message}</span>
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="text"
+                        variant="standard"
+                        label="Last Name"
+                        defaultValue={userInfo?.name.last}
+                        {...register("name.last")}
+                    />
+                    <span className="text-sm text-red-500">{errors.name?.last?.message}</span>
+                </div>
 
-                <FloatingLabel className="dark:text-white"
-                    type="phone"
-                    variant="standard"
-                    label="Phone"
-                    defaultValue={userInfo?.phone}
-                    {...register("phone")}
-                />
-                <span className="text-sm text-red-500">{errors.phone?.message}</span>
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="phone"
+                        variant="standard"
+                        label="Phone"
+                        defaultValue={userInfo?.phone}
+                        {...register("phone")}
+                    />
+                    <span className="text-sm text-red-500">{errors.phone?.message}</span>
+                </div>
             </div>
 
             <div className="flex flex-row gap-6 m-auto w-max">
-                <FloatingLabel className="dark:text-white"
-                    type="text"
-                    variant="standard"
-                    label="image url"
-                    defaultValue={userInfo?.image.url}
-                    {...register("image.url")}
-                />
-                <span className="text-sm text-red-500">{errors.image?.url?.message}</span>
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="text"
+                        variant="standard"
+                        label="image url"
+                        defaultValue={userInfo?.image.url}
+                        {...register("image.url")}
+                    />
+                    <span className="text-sm text-red-500">{errors.image?.url?.message}</span>
+                </div>
 
-                <FloatingLabel className="dark:text-white"
-                    type="text"
-                    variant="standard"
-                    label="image alt"
-                    defaultValue={userInfo?.image.alt}
-                    {...register("image.alt")}
-                />
-                <span className="text-sm text-red-500">{errors.image?.alt?.message}</span>
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="text"
+                        variant="standard"
+                        label="image alt"
+                        defaultValue={userInfo?.image.alt}
+                        {...register("image.alt")}
+                    />
+                    <span className="text-sm text-red-500">{errors.image?.alt?.message}</span>
+                </div>
             </div>
 
             <div className="flex flex-row gap-6 m-auto w-max">
-                <FloatingLabel className="dark:text-white"
-                    type="text"
-                    variant="standard"
-                    label="state"
-                    defaultValue={userInfo?.address.state}
-                    {...register("address.state")}
-                />
-                <span className="text-sm text-red-500">{errors.address?.state?.message}</span>
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="text"
+                        variant="standard"
+                        label="state"
+                        defaultValue={userInfo?.address.state}
+                        {...register("address.state")}
+                    />
+                    <span className="text-sm text-red-500">{errors.address?.state?.message}</span>
+                </div>
 
-                <FloatingLabel className="dark:text-white"
-                    type="text"
-                    variant="standard"
-                    label="country"
-                    defaultValue={userInfo?.address.country}
-                    {...register("address.country")}
-                />
-                <span className="text-sm text-red-500">{errors.address?.country?.message}</span>
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="text"
+                        variant="standard"
+                        label="country"
+                        defaultValue={userInfo?.address.country}
+                        {...register("address.country")}
+                    />
+                    <span className="text-sm text-red-500">{errors.address?.country?.message}</span>
+                </div>
             </div>
 
             <div className="flex flex-row gap-6 m-auto w-max">
-                <FloatingLabel className="dark:text-white"
-                    type="text"
-                    variant="standard"
-                    label="city"
-                    defaultValue={userInfo?.address.city}
-                    {...register("address.city")}
-                />
-                <span className="text-sm text-red-500">{errors.address?.city?.message}</span>
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="text"
+                        variant="standard"
+                        label="city"
+                        defaultValue={userInfo?.address.city}
+                        {...register("address.city")}
+                    />
+                    <span className="text-sm text-red-500">{errors.address?.city?.message}</span>
+                </div>
 
-                <FloatingLabel className="dark:text-white"
-                    type="text"
-                    variant="standard"
-                    label="street"
-                    defaultValue={userInfo?.address.street}
-                    {...register("address.street")}
-                />
-                <span className="text-sm text-red-500">{errors.address?.street?.message}</span>
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="text"
+                        variant="standard"
+                        label="street"
+                        defaultValue={userInfo?.address.street}
+                        {...register("address.street")}
+                    />
+                    <span className="text-sm text-red-500">{errors.address?.street?.message}</span>
+                </div>
             </div>
 
             <div className="flex flex-row gap-6 m-auto w-max">
-                <FloatingLabel className="dark:text-white"
-                    type="number"
-                    variant="standard"
-                    label="houseNumber"
-                    defaultValue={userInfo?.address.houseNumber}
-                    {...register("address.houseNumber")}
-                />
-                <span className="text-sm text-red-500">{errors.address?.houseNumber?.message}</span>
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="number"
+                        variant="standard"
+                        label="houseNumber"
+                        defaultValue={userInfo?.address.houseNumber}
+                        {...register("address.houseNumber")}
+                    />
+                    <span className="text-sm text-red-500">{errors.address?.houseNumber?.message}</span>
+                </div>
 
-                <FloatingLabel className="dark:text-white"
-                    type="number"
-                    variant="standard"
-                    label="zip"
-                    defaultValue={userInfo?.address.zip}
-                    {...register("address.zip")}
-                />
-                <span className="text-sm text-red-500">{errors.address?.zip?.message}</span>
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="number"
+                        variant="standard"
+                        label="zip"
+                        defaultValue={userInfo?.address.zip}
+                        {...register("address.zip")}
+                    />
+                    <span className="text-sm text-red-500">{errors.address?.zip?.message}</span>
+                </div>
             </div>
 
             <Button type="submit" disabled={!isValid} className="dark:text-white">
@@ -280,6 +350,10 @@ const EditUserDetails = () => {
             <Button className=" dark:text-white" onClick={patchBusinessStatus}>
                 Change business status?
             </Button>
+
+            <button type="button" className="h-10 text-sm bg-red-600 rounded-md dark:text-white" onClick={deleteUser}>
+                Delete account?
+            </button>
 
         </form>
     )
