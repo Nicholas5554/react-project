@@ -180,12 +180,12 @@ const EditUserDetails = () => {
                         timerProgressBar: true
                     })
                 }
-
             };
         });
+    }
 
-
-
+    const navToProfile = () => {
+        nav("/profile")
     }
 
     useEffect(() => {
@@ -343,6 +343,10 @@ const EditUserDetails = () => {
                 </div>
             </div>
 
+            <button className="h-10 text-sm text-white transition-colors rounded-md bg-neutral-500 hover:bg-neutral-600" onClick={navToProfile}>
+                Go Back
+            </button>
+
             <Button type="submit" disabled={!isValid} className="dark:text-white">
                 Save Changes
             </Button>
@@ -351,9 +355,11 @@ const EditUserDetails = () => {
                 Change business status?
             </Button>
 
-            <button type="button" className="h-10 text-sm bg-red-600 rounded-md dark:text-white" onClick={deleteUser}>
-                Delete account?
+            <button type="button" className="h-10 text-sm text-white transition-colors bg-red-600 rounded-md hover:bg-red-800" onClick={deleteUser}>
+                Delete my account?
             </button>
+
+
 
         </form>
     )

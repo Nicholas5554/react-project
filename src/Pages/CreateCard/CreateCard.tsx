@@ -67,6 +67,10 @@ const CreateCard = () => {
                 confirmButtonColor: '#3085d6'
             })
         }
+    };
+
+    const navToMyCards = () => {
+        nav("/mycards")
     }
 
     return (
@@ -203,6 +207,7 @@ const CreateCard = () => {
                     <span className="text-sm text-red-500">{errors.address?.zip?.message}</span>
                 </div>
 
+                <button className="h-10 text-sm text-white transition-colors rounded-md bg-neutral-500 hover:bg-neutral-600" onClick={navToMyCards}>Go Back</button>
                 <Button type="submit" disabled={!isValid} className="dark:text-white">Create card</Button>
 
             </form>

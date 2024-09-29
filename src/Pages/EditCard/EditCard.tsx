@@ -92,6 +92,10 @@ const EditCard = () => {
         }
     };
 
+    const navToMyCards = () => {
+        nav("/mycards")
+    }
+
     useEffect(() => {
         getData();
     }, [id]);
@@ -273,8 +277,9 @@ const EditCard = () => {
                     </div>
                 </div>
 
-                <Button type="submit" disabled={!isValid} className="dark:text-white">Edit card</Button>
+                <button className="h-10 text-sm text-white transition-colors rounded-md bg-neutral-500 hover:bg-neutral-600" onClick={navToMyCards}>Go Back</button>
 
+                <Button type="submit" disabled={!isValid} className="dark:text-white">Edit card</Button>
             </form>
         </>
     );
