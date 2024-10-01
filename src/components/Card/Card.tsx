@@ -17,7 +17,7 @@ const Card = () => {
                 searchCards()!.map((card: TCard) => {
                     return (
                         <div key={card._id} className="w-[365px] h-[600px] shadow-lg dark:shadow-md dark:shadow-blue-500/50 flex justify-center items-center flex-col">
-                            <img className="rounded-t-lg w-[100%] h-[200px] object-cover cursor-pointer" src={card.image.url} alt="image" onClick={() => navToCard(card._id)} />
+                            <img className="rounded-t-lg w-[100%] h-2/3 object-cover cursor-pointer" src={card.image.url} alt="image" onClick={() => navToCard(card._id)} />
                             <div className="p-5">
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{card.title}</h5>
                                 <p className="mb-3 font-bold text-gray-700 dark:text-slate-300 h-[20px]">{card.subtitle}</p>

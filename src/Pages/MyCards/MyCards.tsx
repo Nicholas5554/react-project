@@ -26,11 +26,10 @@ const Mycards = () => {
             <div className="flex flex-wrap w-1/1 ">
                 {searchCards().map((item: TCard) => {
                     return (
-                        <Card key={item._id} className="flex flex-row items-center justify-center">
+                        <Card key={item._id} className="flex flex-row items-center justify-center w-60">
                             <img src={item.image.url} alt={item.image.alt} className="object-fill h-[200px] cursor-pointer" onClick={() => navToCard(item._id)} />
                             <h1>{item.title}</h1>
                             <h3>{item.subtitle}</h3>
-                            {/* <p>{item.description}</p> */}
                             {user.user && < FaHeart
                                 size={35}
                                 className="m-auto cursor-pointer"
@@ -53,7 +52,7 @@ const Mycards = () => {
             </div>
             {user.user?.isBusiness && <div className="flex bg-gray-500 rounded-full cursor-pointer">
                 <BiPlus
-                    size={30}
+                    size={40}
                     onClick={navToCreateCard}
                 />
             </div>}
