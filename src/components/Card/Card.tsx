@@ -1,92 +1,15 @@
-
-import axios from "axios";
-/* import { Button } from "flowbite-react"; */
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { TRootState } from "../../Store/bigPie";
-import { useNavigate } from "react-router-dom";
-/* import { decode } from "../../Services/tokenService"; */
 import { FaHeart } from "react-icons/fa";
-import Swal from "sweetalert2";
-/* import Swal from "sweetalert2"; */
-
+import { card } from "../../Hooks/card";
 
 const Card = () => {
 
-    const nav = useNavigate();
-
-    const [cards, cardsSet] = useState<TCard[]>([]);
-
-    const searchWord = useSelector((state: TRootState) => state.searchSlice.search);
-    const user = useSelector((state: TRootState) => state.userSlice)
-
-    const searchCards = () => {
-        return cards?.filter((item: TCard) => item.title.includes(searchWord.toLocaleLowerCase()));
-    }
-
-    const likedCard = (card: TCard) => {
-        if (user && user.user) {
-            return card.likes.includes(user.user._id);
-        } else {
-            return false;
-        }
-    }
-
-    const navToCard = (id: string) => {
-        nav("/card/" + id);
-    }
-
-    const fetchCards = async () => {
-        try {
-            const res = await axios.get('https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards');
-            cardsSet(res.data);
-            console.log(res.data);
-        } catch (err: any) {
-            console.log('error:', err.data);
-        }
-    }
-
-    const likeDislikeCard = async (card: TCard) => {
-        const res = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + card._id)
-        if (res.status === 200) {
-
-            const cardIndex = cards.indexOf(card);
-            const isLiked = cards[cardIndex].likes.includes(user.user!._id);
-            const newCards = [...cards];
-
-            const ToastSweet = Swal.mixin({
-                toast: true,
-                position: "top-right",
-                customClass: {
-                    popup: 'colored-toast',
-                },
-                showConfirmButton: false,
-                timer: 1500,
-                timerProgressBar: true,
-            });
-
-            if (isLiked) {
-                newCards[cardIndex].likes.splice(cardIndex);
-                ToastSweet.fire({
-                    title: 'Card Disliked',
-                    icon: 'warning',
-                    toast: true,
-                });
-            } else {
-                newCards[cardIndex].likes.push(user.user!._id);
-                ToastSweet.fire({
-                    title: 'Card Liked',
-                    icon: 'success',
-                    toast: true,
-                });
-            }
-            cardsSet(newCards);
-        }
-    }
-
-    useEffect(() => {
-        fetchCards();
-    }, [])
+    const {
+        searchCards,
+        likedCard,
+        navToCard,
+        likeDislikeCard,
+        user
+    } = card();
 
     return (
         <div className="flex flex-wrap w-[100vw]   justify-center bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 gap-7 shadow">
