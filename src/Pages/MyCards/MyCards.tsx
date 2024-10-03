@@ -50,10 +50,10 @@ const Mycards = () => {
                     )
                 })}
             </div>
-            {user.user?.isBusiness && <div className="flex bg-gray-500 rounded-full cursor-pointer">
+            {user.user?.isBusiness && <div className="flex items-center justify-center p-3 text-white transition-colors bg-gray-500 rounded-full cursor-pointer hover:bg-gray-600" onClick={navToCreateCard}>
+                <p className="text-lg font-semibold">Create a new card</p>
                 <BiPlus
-                    size={40}
-                    onClick={navToCreateCard}
+                    size={35}
                 />
             </div>}
         </div>
