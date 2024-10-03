@@ -41,40 +41,51 @@ export const card = () => {
     }
 
     const likeDislikeCard = async (card: TCard) => {
-        const res = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + card._id)
-        if (res.status === 200) {
+        try {
+            const res = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + card._id)
+            if (res.status === 200) {
 
-            const cardIndex = cards.indexOf(card);
-            const isLiked = cards[cardIndex].likes.includes(user.user!._id);
-            const newCards = [...cards];
+                const cardIndex = cards.indexOf(card);
+                const isLiked = cards[cardIndex].likes.includes(user.user!._id);
+                const newCards = [...cards];
 
-            const ToastSweet = Swal.mixin({
-                toast: true,
-                position: "top-right",
-                customClass: {
-                    popup: 'colored-toast',
-                },
-                showConfirmButton: false,
-                timer: 1500,
-                timerProgressBar: true,
-            });
-
-            if (isLiked) {
-                newCards[cardIndex].likes.splice(cardIndex);
-                ToastSweet.fire({
-                    title: 'Card Disliked',
-                    icon: 'warning',
+                const ToastSweet = Swal.mixin({
                     toast: true,
+                    position: "top-right",
+                    customClass: {
+                        popup: 'colored-toast',
+                    },
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
                 });
-            } else {
-                newCards[cardIndex].likes.push(user.user!._id);
-                ToastSweet.fire({
-                    title: 'Card Liked',
-                    icon: 'success',
-                    toast: true,
-                });
+
+                if (isLiked) {
+                    newCards[cardIndex].likes.splice(cardIndex);
+                    ToastSweet.fire({
+                        title: 'Card Disliked',
+                        icon: 'warning',
+                        toast: true,
+                    });
+                } else {
+                    newCards[cardIndex].likes.push(user.user!._id);
+                    ToastSweet.fire({
+                        title: 'Card Liked',
+                        icon: 'success',
+                        toast: true,
+                    });
+                }
+                cardsSet(newCards);
             }
-            cardsSet(newCards);
+        } catch (err) {
+            console.log("error: ", err);
+            Swal.fire({
+                title: "Error",
+                text: "could not like/dislike",
+                icon: "error",
+                timer: 1500,
+                timerProgressBar: true
+            })
         }
     }
 

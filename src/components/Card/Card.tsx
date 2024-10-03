@@ -12,7 +12,7 @@ const Card = () => {
     } = card();
 
     return (
-        <div className="flex flex-wrap w-[100vw]   justify-center bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 gap-8 shadow">
+        <div className="flex flex-wrap w-[100vw]  justify-center bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 gap-8 shadow">
             {
                 searchCards()!.map((card: TCard) => {
                     return (
