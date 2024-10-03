@@ -46,7 +46,7 @@ export const favorites = () => {
             if (res.status === 200) {
 
                 const cardIndex = cards.indexOf(card);
-                const isLiked = cards[cardIndex].likes.includes(user.user!._id);
+                const userIndex = card.likes.indexOf(user.user!._id);
                 const newCards = [...cards];
 
                 const ToastSweet = Swal.mixin({
@@ -60,22 +60,22 @@ export const favorites = () => {
                     timerProgressBar: true,
                 });
 
-                if (isLiked) {
-                    newCards[cardIndex].likes.splice(cardIndex);
-                    ToastSweet.fire({
-                        title: 'Card disliked',
-                        icon: 'warning',
-                        toast: true,
-                    });
-
-                } else {
+                if (userIndex === -1) {
                     newCards[cardIndex].likes.push(user.user!._id);
                     ToastSweet.fire({
-                        title: 'Card liked',
+                        title: 'Card Liked',
                         icon: 'success',
                         toast: true,
                     });
+                } else {
+                    newCards[cardIndex].likes.splice(userIndex, 1);
+                    ToastSweet.fire({
+                        title: 'Card Disliked',
+                        icon: 'warning',
+                        toast: true,
+                    });
                 }
+
                 cardsSet(newCards);
             }
         } catch (err) {

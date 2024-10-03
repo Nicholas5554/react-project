@@ -34,43 +34,55 @@ export const myCards = () => {
         } else return false
     };
 
-    const likeUnlikeCard = async (card: TCard) => {
+    const likeDislikeCard = async (card: TCard) => {
         try {
-            const res = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + card._id);
+            const res = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + card._id)
             if (res.status === 200) {
-                const index = cards.indexOf(card);
-                const ifLiked = cards[index].likes.includes(user.user!._id);
+
+                const cardIndex = cards.indexOf(card);
+                const userIndex = card.likes.indexOf(user.user!._id);
                 const newCards = [...cards];
-                if (ifLiked) {
-                    newCards[index].likes.splice(index);
-                    ToastSweet.fire({
-                        title: 'Card Disliked',
-                        icon: 'warning',
-                        toast: true,
-                    });
-                } else {
-                    newCards[index].likes.push(user.user!._id);
+
+                const ToastSweet = Swal.mixin({
+                    toast: true,
+                    position: "top-right",
+                    customClass: {
+                        popup: 'colored-toast',
+                    },
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                });
+
+                if (userIndex === -1) {
+                    newCards[cardIndex].likes.push(user.user!._id);
                     ToastSweet.fire({
                         title: 'Card Liked',
                         icon: 'success',
                         toast: true,
                     });
+                } else {
+                    newCards[cardIndex].likes.splice(userIndex, 1);
+                    ToastSweet.fire({
+                        title: 'Card Disliked',
+                        icon: 'warning',
+                        toast: true,
+                    });
                 }
+
                 setCards(newCards);
             }
         } catch (err) {
             console.log("error: ", err);
             Swal.fire({
                 title: "Error",
-                text: "unxpected error",
+                text: "could not like/dislike",
                 icon: "error",
                 timer: 1500,
                 timerProgressBar: true
             })
         }
-    };
-
-
+    }
 
     const deleteCard = async (card: TCard) => {
         try {
@@ -150,7 +162,7 @@ export const myCards = () => {
         cards,
         searchCards,
         isLikedCard,
-        likeUnlikeCard,
+        likeDislikeCard,
         deleteCard,
         editCard,
         navToCard,

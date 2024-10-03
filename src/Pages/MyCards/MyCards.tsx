@@ -9,7 +9,7 @@ const Mycards = () => {
     const {
         user,
         navToCard,
-        likeUnlikeCard,
+        likeDislikeCard,
         isLikedCard,
         searchCards,
         deleteCard,
@@ -34,7 +34,7 @@ const Mycards = () => {
                                 size={35}
                                 className="m-auto cursor-pointer"
                                 color={isLikedCard(item) ? "red" : "black"}
-                                onClick={() => likeUnlikeCard(item)}
+                                onClick={() => likeDislikeCard(item)}
                             />}
                             <FaPencil
                                 size={30}
