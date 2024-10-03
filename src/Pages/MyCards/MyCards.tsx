@@ -24,26 +24,26 @@ const Mycards = () => {
             {user.isLoggedIn && <p className="flex flex-row items-center justify-center gap-2 text-lg">Made by you <FaHeart color="red" /> </p>}
 
             <div className="flex flex-wrap items-center justify-center w-1/1">
-                {searchCards().map((item: TCard) => {
+                {searchCards().map((card: TCard) => {
                     return (
-                        <Card key={item._id} className="flex items-center justify-center w-56 m-auto">
-                            <img src={item.image.url} alt={item.image.alt} className="object-fill h-[200px] cursor-pointer" onClick={() => navToCard(item._id)} />
-                            <h1>{item.title}</h1>
-                            <h3 className="text-[14px]">{item.subtitle}</h3>
+                        <Card key={card._id} className="flex items-center justify-center w-56 m-auto">
+                            <img src={card.image.url} alt={card.image.alt} className="object-fill h-[200px] cursor-pointer" onClick={() => navToCard(card._id)} />
+                            <h1>{card.title}</h1>
+                            <h3 className="text-[14px]">{card.subtitle}</h3>
                             {user.user && < FaHeart
                                 size={35}
                                 className="m-auto cursor-pointer"
-                                color={isLikedCard(item) ? "red" : "black"}
-                                onClick={() => likeDislikeCard(item)}
+                                color={isLikedCard(card) ? "red" : "black"}
+                                onClick={() => likeDislikeCard(card)}
                             />}
                             <FaPencil
                                 size={30}
                                 className="m-auto cursor-pointer"
-                                onClick={() => editCard(item)}
+                                onClick={() => editCard(card)}
                             />
                             <FaTrash
                                 size={30}
-                                onClick={() => deleteCard(item)}
+                                onClick={() => deleteCard(card)}
                                 className="m-auto cursor-pointer"
                             />
                         </Card>
