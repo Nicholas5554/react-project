@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { TRootState } from "../Store/bigPie";
 
-export const card = () => {
+export const homeCardFuncs = () => {
 
     const nav = useNavigate();
 
