@@ -26,7 +26,7 @@ const Mycards = () => {
             <div className="flex flex-wrap items-center justify-center gap-4 w-1/1">
                 {searchCards().map((card: TCard) => {
                     return (
-                        <Card key={card._id} className="flex items-center justify-center text-center w-80">
+                        <Card key={card._id} className="flex items-center justify-center w-auto text-center">
                             <img src={card.image.url} alt={card.image.alt} className="object-fill w-72 h-[200px] cursor-pointer" onClick={() => navToCard(card._id)} />
                             <h1>{card.title}</h1>
                             <h3 className="text-[14px]">{card.subtitle}</h3>
