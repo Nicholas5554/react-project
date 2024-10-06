@@ -55,7 +55,6 @@ export const editUser = () => {
             axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
             const res = await axios.get("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + id);
             setUserInfo(res.data);
-            console.log(res.data);
 
         } catch (error) {
             console.log(`error:`, error);
@@ -74,7 +73,7 @@ export const editUser = () => {
         try {
             axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
             const res = await axios.put("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + userInfo?._id, form);
-            console.log(res.data);
+            setUserInfo(res.data);
 
             Swal.fire({
                 title: "success",
@@ -113,7 +112,7 @@ export const editUser = () => {
                 try {
                     axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
                     const res = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + userInfo?._id, { business: !userInfo?.isBusiness });
-                    console.log(res.data);
+                    dispatch(userActions.login(res.data));
 
                     Swal.fire({
                         title: "success",

@@ -1,67 +1,28 @@
-import { useSelector } from "react-redux";
-import { TRootState } from "../../Store/bigPie";
-import { Button } from "flowbite-react";
-import { useNavigate } from "react-router-dom";
+import { Button, Card } from "flowbite-react";
+import { profile } from "../../Hooks/profile";
 
 const Profile = () => {
 
-    const user = useSelector((state: TRootState) => state.userSlice.user);
-
-    const nav = useNavigate();
-    const navToChange = () => {
-        nav("/edituser/" + user?._id);
-    }
+    const {
+        user,
+        navToChange
+    } = profile();
 
     return (
         <div className="text-center dark:text-white w-[90vw] flex flex-col justify-center items-center gap-2">
 
             <h1 className="text-3xl font-bold text-teal-500">Profile Page</h1>
             <br />
-            <h2 className="font-bold text-teal-300">{`welcome ${user?.name.first} ${user?.name.last} to your profile page`}</h2>
-            <br />
-            <h1 className="font-bold text-teal-500">About the Cards Creation Showcase</h1>
-            <p className="size-auto">
-                The Cards Creation Showcase is an API-powered platform designed to let users create and display custom cards.
-                Whether you're a card enthusiast or just enjoy creating something unique, this tool allows you to personalize your cards
-                and share them with the community.
-            </p>
-            <br />
-            <h2 className="font-bold text-teal-500">Features</h2>
-            <ul>
-                {user?.isBusiness &&
-                    <li>Create custom cards with attributes like names, images, and descriptions.</li>}
+            <div className="flex flex-wrap items-center justify-center gap-4 w-1/1">
+                <Card className="flex items-center justify-center w-auto">
+                    <img src={user?.image.url} alt={user?.image.alt} className="object-fill w-72 h-[200px]  m-auto" />
+                    <h1>{user?.name.first}</h1>
+                    <h3 className="text-[14px]">{user?.email}</h3>
+                    <p>{user?.isBusiness ? "Business User" : "Personal User"}</p>
+                    <p>{user?.phone}</p>
+                </Card>
 
-                <li>View a collection of cards created by other users and get inspired.</li>
-
-                {user?.isBusiness &&
-                    <li>Edit or delete your cards at any time to keep your collection updated.</li>}
-
-                <li>Explore a wide variety of cards created using the API.</li>
-
-                {user?.isBusiness &&
-                    <li>Responsive design, allowing you to create and manage cards on both desktop and mobile devices.</li>}
-            </ul>
-            <br />
-            <h2 className="font-bold text-teal-500">Technologies Used</h2>
-            <p>
-                This project leverages modern technologies to ensure a smooth and dynamic card creation experience:
-            </p>
-            <ul>
-                <li><strong>React:</strong> For building the interactive user interface.</li>
-                <li><strong>API Integration:</strong> To allow dynamic card creation with custom attributes.</li>
-                <li><strong>Tailwind:</strong> For styling the components and making the UI visually appealing.</li>
-            </ul>
-            <br />
-            <h2 className="font-bold text-teal-500">How It Works</h2>
-            <p>
-                The platform is structured as a single-page application, where users interact with the API to create new cards.
-                The cards are dynamically displayed on the page, and you can explore different user creations in real-time.
-                React state management ensures that the data is always up-to-date.
-            </p>
-            <p>
-                This project is perfect for anyone interested in learning API integration or practicing React. It demonstrates how to
-                manage dynamic content in a user-friendly and engaging way.
-            </p>
+            </div>
 
             <Button onClick={navToChange} className="mt-5 w-58">To Change your information</Button>
         </div>
@@ -70,3 +31,4 @@ const Profile = () => {
 }
 
 export default Profile;
+
