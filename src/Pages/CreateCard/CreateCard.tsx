@@ -18,15 +18,15 @@ const CreateCard = () => {
             >
                 <h1 className="text-2xl font-bold dark:text-white">Create card</h1>
 
-                <div className="flex flex-row gap-6 m-auto w-max">
-                    <div className="flex flex-col w-[100%]">
+                <div className="flex flex-row items-center justify-center w-3/4 gap-6 m-auto">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="text"
                             variant="standard"
                             label="title"
                             {...register("title")}
                         />
-                        <span className="text-sm text-red-500">{errors.title?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.title?.message}</span>
                     </div>
 
                     <div className="flex flex-col w-[100%]">
@@ -36,11 +36,11 @@ const CreateCard = () => {
                             label="subtitle"
                             {...register("subtitle")}
                         />
-                        <span className="text-sm text-red-500">{errors.subtitle?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.subtitle?.message}</span>
                     </div>
                 </div>
 
-                <div className="flex flex-row gap-6 m-auto w-max">
+                <div className="flex flex-row items-center justify-center w-3/4 gap-6 m-auto">
                     <div className="flex flex-col w-[100%]">
                         <FloatingLabel className="dark:text-white"
                             type="text"
@@ -48,7 +48,7 @@ const CreateCard = () => {
                             label="description"
                             {...register("description")}
                         />
-                        <span className="text-sm text-red-500">{errors.description?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.description?.message}</span>
                     </div>
 
                     <div className="flex flex-col w-[100%]">
@@ -59,11 +59,11 @@ const CreateCard = () => {
                             {...register("phone")}
                         />
 
-                        <span className="text-sm text-red-500">{errors.phone?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.phone?.message}</span>
                     </div>
                 </div>
 
-                <div className="flex flex-row gap-6 m-auto w-max">
+                <div className="flex flex-row items-center justify-center w-3/4 gap-6 m-auto">
                     <div className="flex flex-col w-[100%]">
                         <FloatingLabel className="dark:text-white"
                             type="text"
@@ -71,7 +71,7 @@ const CreateCard = () => {
                             label="email"
                             {...register("email")}
                         />
-                        <span className="text-sm text-red-500">{errors.email?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.email?.message}</span>
                     </div>
 
                     <div className="flex flex-col w-[100%]">
@@ -81,11 +81,11 @@ const CreateCard = () => {
                             label="web"
                             {...register("web")}
                         />
-                        <span className="text-sm text-red-500">{errors.web?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.web?.message}</span>
                     </div>
                 </div>
 
-                <div className="flex flex-row gap-6 m-auto w-max">
+                <div className="flex flex-row items-center justify-center w-3/4 gap-6 m-auto">
                     <div className="flex flex-col w-[100%]">
                         <FloatingLabel className="dark:text-white"
                             type="text"
@@ -93,7 +93,7 @@ const CreateCard = () => {
                             label="image url"
                             {...register("image.url")}
                         />
-                        <span className="text-sm text-red-500">{errors.image?.url?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.image?.url?.message}</span>
                     </div>
 
                     <div className="flex flex-col w-[100%]">
@@ -103,11 +103,11 @@ const CreateCard = () => {
                             label="image alt"
                             {...register("image.alt")}
                         />
-                        <span className="text-sm text-red-500">{errors.image?.alt?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.image?.alt?.message}</span>
                     </div>
                 </div>
 
-                <div className="flex flex-row gap-6 m-auto w-max">
+                <div className="flex flex-row items-center justify-center w-3/4 gap-6 m-auto">
                     <div className="flex flex-col w-[100%]">
                         <FloatingLabel className="dark:text-white"
                             type="text"
@@ -115,7 +115,7 @@ const CreateCard = () => {
                             label="state"
                             {...register("address.state")}
                         />
-                        <span className="text-sm text-red-500">{errors.address?.state?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.address?.state?.message}</span>
                     </div>
 
                     <div className="flex flex-col w-[100%]">
@@ -125,11 +125,11 @@ const CreateCard = () => {
                             label="country"
                             {...register("address.country")}
                         />
-                        <span className="text-sm text-red-500">{errors.address?.country?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.address?.country?.message}</span>
                     </div>
                 </div>
 
-                <div className="flex flex-row gap-6 m-auto w-max">
+                <div className="flex flex-row items-center justify-center w-3/4 gap-6 m-auto">
                     <div className="flex flex-col w-[100%]">
                         <FloatingLabel className="dark:text-white"
                             type="text"
@@ -137,7 +137,7 @@ const CreateCard = () => {
                             label="city"
                             {...register("address.city")}
                         />
-                        <span className="text-sm text-red-500">{errors.address?.city?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.address?.city?.message}</span>
                     </div>
 
                     <div className="flex flex-col w-[100%]">
@@ -147,11 +147,11 @@ const CreateCard = () => {
                             label="street"
                             {...register("address.street")}
                         />
-                        <span className="text-sm text-red-500">{errors.address?.street?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.address?.street?.message}</span>
                     </div>
                 </div>
 
-                <div className="flex flex-row gap-6 m-auto w-max">
+                <div className="flex flex-row items-center justify-center w-3/4 gap-6 m-auto">
                     <div className="flex flex-col w-[100%]">
                         <FloatingLabel className="dark:text-white"
                             type="number"
@@ -159,7 +159,7 @@ const CreateCard = () => {
                             label="houseNumber"
                             {...register("address.houseNumber")}
                         />
-                        <span className="text-sm text-red-500">{errors.address?.houseNumber?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.address?.houseNumber?.message}</span>
                     </div>
 
                     <div className="flex flex-col w-[100%]">
@@ -169,7 +169,7 @@ const CreateCard = () => {
                             label="zip"
                             {...register("address.zip")}
                         />
-                        <span className="text-sm text-red-500">{errors.address?.zip?.message}</span>
+                        <span className="w-40 overflow-hidden text-xs text-red-500 h-9">{errors.address?.zip?.message}</span>
                     </div>
                 </div>
 

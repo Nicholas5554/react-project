@@ -66,7 +66,7 @@ const Profile = () => {
             <Button onClick={navToChange} className="mt-5 w-58">To Change your information</Button>
         </div>
 
-    )
+    );
 }
 
 export default Profile;

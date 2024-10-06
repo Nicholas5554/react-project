@@ -21,7 +21,7 @@ const Favorites = () => {
                 {searchCards().map((card: TCard) => {
                     return (
                         <Card key={card._id} className="flex items-center justify-center w-auto">
-                            <img src={card.image.url} alt={card.image.alt} className="object-fill w-72 h-[200px] cursor-pointer" onClick={() => navToCard(card._id)} />
+                            <img src={card.image.url} alt={card.image.alt} className="object-fill w-72 h-[200px] cursor-pointer m-auto" onClick={() => navToCard(card._id)} />
                             <h1>{card.title}</h1>
                             <h3 className="text-[14px]">{card.subtitle}</h3>
                             {user.user && < FaHeart
