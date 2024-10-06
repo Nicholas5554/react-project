@@ -17,12 +17,12 @@ const EditUserDetails = () => {
     } = editUser();
 
     return (
-        <form onSubmit={handleSubmit(submitForm)} className="flex flex-col justify-center gap-4 p-4 m-auto mt-20 rounded-lg shadow-lg w-2/7">
+        <form onSubmit={handleSubmit(submitForm)} className="flex flex-col items-center justify-center gap-4 p-4 m-auto mt-20 rounded-lg shadow-lg w-1/1">
 
             <h1 className="text-2xl font-bold dark:text-white">Edit User Details</h1>
 
-            <div className="flex flex-row gap-6 m-auto w-max">
-                <div className="flex flex-col">
+            <div className="flex flex-row justify-around gap-11 w-80">
+                <div className="flex flex-col w-[100%]">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -33,7 +33,7 @@ const EditUserDetails = () => {
                     <span className="text-sm text-red-500">{errors.name?.first?.message}</span>
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col w-[100%]">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -45,8 +45,8 @@ const EditUserDetails = () => {
                 </div>
             </div>
 
-            <div className="flex flex-row gap-6 m-auto w-max">
-                <div className="flex flex-col">
+            <div className="flex flex-row justify-around gap-11 w-80">
+                <div className="flex flex-col w-[100%]">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -57,7 +57,7 @@ const EditUserDetails = () => {
                     <span className="text-sm text-red-500">{errors.name?.last?.message}</span>
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col w-[100%]">
                     <FloatingLabel className="dark:text-white"
                         type="phone"
                         variant="standard"
@@ -69,8 +69,8 @@ const EditUserDetails = () => {
                 </div>
             </div>
 
-            <div className="flex flex-row gap-6 m-auto w-max">
-                <div className="flex flex-col">
+            <div className="flex flex-row justify-around gap-11 w-80">
+                <div className="flex flex-col w-[100%]">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -81,7 +81,7 @@ const EditUserDetails = () => {
                     <span className="text-sm text-red-500">{errors.image?.url?.message}</span>
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col w-[100%]">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -93,8 +93,8 @@ const EditUserDetails = () => {
                 </div>
             </div>
 
-            <div className="flex flex-row gap-6 m-auto w-max">
-                <div className="flex flex-col">
+            <div className="flex flex-row justify-around gap-11 w-80">
+                <div className="flex flex-col w-[100%]">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -105,7 +105,7 @@ const EditUserDetails = () => {
                     <span className="text-sm text-red-500">{errors.address?.state?.message}</span>
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col w-[100%]">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -117,8 +117,8 @@ const EditUserDetails = () => {
                 </div>
             </div>
 
-            <div className="flex flex-row gap-6 m-auto w-max">
-                <div className="flex flex-col">
+            <div className="flex flex-row justify-around gap-11 w-80">
+                <div className="flex flex-col w-[100%]">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -129,7 +129,7 @@ const EditUserDetails = () => {
                     <span className="text-sm text-red-500">{errors.address?.city?.message}</span>
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col w-[100%]">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -141,8 +141,8 @@ const EditUserDetails = () => {
                 </div>
             </div>
 
-            <div className="flex flex-row gap-6 m-auto w-max">
-                <div className="flex flex-col">
+            <div className="flex flex-row justify-around gap-11 w-80">
+                <div className="flex flex-col w-[100%]">
                     <FloatingLabel className="dark:text-white"
                         type="number"
                         variant="standard"
@@ -153,7 +153,7 @@ const EditUserDetails = () => {
                     <span className="text-sm text-red-500">{errors.address?.houseNumber?.message}</span>
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col w-[100%]">
                     <FloatingLabel className="dark:text-white"
                         type="number"
                         variant="standard"
@@ -165,19 +165,19 @@ const EditUserDetails = () => {
                 </div>
             </div>
 
-            <button className="h-10 text-sm text-white transition-colors rounded-md bg-neutral-500 hover:bg-neutral-600" onClick={navToProfile}>
+            <button className="w-full h-10 text-sm text-white transition-colors rounded-md bg-neutral-500 hover:bg-neutral-600" onClick={navToProfile}>
                 Go Back
             </button>
 
-            <Button type="submit" disabled={!isValid} className="dark:text-white">
+            <Button type="submit" disabled={!isValid} className="w-full dark:text-white">
                 Save Changes
             </Button>
 
-            <Button className=" dark:text-white" onClick={patchBusinessStatus}>
+            <Button className="w-full  dark:text-white" onClick={patchBusinessStatus}>
                 Change business status?
             </Button>
 
-            <button type="button" className="h-10 text-sm text-white transition-colors bg-red-600 rounded-md hover:bg-red-800" onClick={deleteUser}>
+            <button type="button" className="w-full h-10 text-sm text-white transition-colors bg-red-600 rounded-md hover:bg-red-800" onClick={deleteUser}>
                 Delete my account?
             </button>
 

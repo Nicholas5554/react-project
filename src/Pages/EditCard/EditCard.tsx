@@ -14,13 +14,13 @@ const EditCard = () => {
 
     return (
         <>
-            <form className="flex flex-col justify-center gap-4 p-4 m-auto mt-20 rounded-lg shadow-lg w-2/7"
+            <form className="flex flex-col items-center justify-center gap-4 p-4 m-auto mt-20 rounded-lg shadow-lg w-1/1"
                 onSubmit={handleSubmit(onSubmit)
                 }
             >
                 <h1 className="text-2xl font-bold dark:text-white">Edit card</h1>
 
-                <div className="flex flex-row justify-around gap-11 w-max">
+                <div className="flex flex-row justify-around gap-11 w-80">
                     <div className="flex flex-col w-[100%]">
                         <FloatingLabel className="dark:text-white"
                             type="text"
@@ -44,7 +44,7 @@ const EditCard = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-row justify-around gap-11 w-max">
+                <div className="flex flex-row justify-around gap-11 w-80">
                     <div className="flex flex-col w-[100%]">
                         <FloatingLabel className="dark:text-white"
                             type="text"
@@ -69,7 +69,7 @@ const EditCard = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-row justify-around gap-11 w-max ">
+                <div className="flex flex-row justify-around gap-11 w-80">
                     <div className="flex flex-col w-[100%]">
                         <FloatingLabel className="dark:text-white"
                             type="text"
@@ -93,7 +93,7 @@ const EditCard = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-row justify-around gap-11 w-max">
+                <div className="flex flex-row justify-around gap-11 w-80">
                     <div className="flex flex-col w-[100%]">
                         <FloatingLabel className="dark:text-white"
                             type="text"
@@ -117,7 +117,7 @@ const EditCard = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-row justify-around gap-11 w-max">
+                <div className="flex flex-row justify-around gap-11 w-80">
                     <div className="flex flex-col w-[100%]">
                         <FloatingLabel className="dark:text-white"
                             type="text"
@@ -141,7 +141,7 @@ const EditCard = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-row justify-around gap-11 w-max">
+                <div className="flex flex-row justify-around gap-11 w-80">
                     <div className="flex flex-col w-[100%]">
                         <FloatingLabel className="dark:text-white"
                             type="text"
@@ -165,7 +165,7 @@ const EditCard = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-row justify-around gap-11 w-max">
+                <div className="flex flex-row justify-around gap-11 w-80">
                     <div className="flex flex-col w-[100%]">
                         <FloatingLabel className="dark:text-white"
                             type="number"
@@ -189,9 +189,9 @@ const EditCard = () => {
                     </div>
                 </div>
 
-                <button className="h-10 text-sm text-white transition-colors rounded-md bg-neutral-500 hover:bg-neutral-600" onClick={navToMyCards}>Go Back</button>
+                <button className="w-full h-10 text-sm text-white transition-colors rounded-md bg-neutral-500 hover:bg-neutral-600" onClick={navToMyCards}>Go Back</button>
 
-                <Button type="submit" disabled={!isValid} className="dark:text-white">Edit card</Button>
+                <Button type="submit" disabled={!isValid} className="w-full dark:text-white">Edit card</Button>
             </form>
         </>
     );

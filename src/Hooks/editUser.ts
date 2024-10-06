@@ -84,7 +84,7 @@ export const editUser = () => {
                 timer: 1500,
                 timerProgressBar: true
             });
-            nav("/profile");
+            navToProfile();
         } catch (error) {
             console.log(`error:`, error);
             Swal.fire({

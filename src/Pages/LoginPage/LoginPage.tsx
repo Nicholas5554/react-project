@@ -13,7 +13,7 @@ const LoginPage = () => {
     } = loginPage();
 
     return (
-        <form onSubmit={handleSubmit(submitLogin)} className="flex flex-col gap-4 p-4 mt-20 rounded-lg shadow-lg">
+        <form onSubmit={handleSubmit(submitLogin)} className="flex flex-col items-center justify-center gap-4 p-4 m-auto mt-20 rounded-lg shadow-lg w-1/1">
 
             <h1 className="text-2xl font-bold dark:text-white">Login</h1>
 
@@ -33,7 +33,7 @@ const LoginPage = () => {
             />
             <span className="text-sm text-red-500">{errors.password?.message}</span>
 
-            <Button type="submit" disabled={!isValid} className="dark:text-white">
+            <Button type="submit" disabled={!isValid} className="w-full dark:text-white">
                 Login
             </Button>
 
