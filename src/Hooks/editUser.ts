@@ -59,8 +59,8 @@ export const editUser = () => {
         } catch (error) {
             console.log(`error:`, error);
             Swal.fire({
-                title: "error",
-                text: "error getting your user",
+                title: "Error",
+                text: "Error getting your user",
                 icon: "error",
                 confirmButtonColor: '#3085d6',
                 timer: 1500,
@@ -105,7 +105,7 @@ export const editUser = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: `change your status to ${!userInfo?.isBusiness ? "business" : "personal"}`
+            confirmButtonText: `change your status to ${userInfo?.isBusiness ? "personal" : "business"} ?`
         }).then(async (result) => {
             if (result.isConfirmed) {
 
@@ -153,7 +153,7 @@ export const editUser = () => {
                 try {
                     axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
                     const res = await axios.delete("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + userInfo?._id);
-                    console.log(res.data);
+                    setUserInfo(res.data);
                     dispatch(userActions.logout());
                     localStorage.removeItem("token");
 

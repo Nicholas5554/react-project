@@ -47,6 +47,10 @@ const Header = () => {
                     My cards
                 </Navbar.Link>)}
 
+                {user?.isAdmin && (<Navbar.Link as={Link} href="/crm" to="/crm" active={loc === '/crm'}>
+                    Crm
+                </Navbar.Link>)}
+
                 {!user && (<Navbar.Link as={Link} href="/register" to="/register" active={loc === '/register'}>
                     Register
                 </Navbar.Link>)}

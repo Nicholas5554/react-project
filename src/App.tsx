@@ -17,6 +17,7 @@ import Mycards from "./Pages/MyCards/MyCards";
 import CreateCard from "./Pages/CreateCard/CreateCard";
 import EditCard from "./Pages/EditCard/EditCard";
 import EditUserDetails from "./Pages/EditUserDetails/EditUserDetails";
+import Crm from "./Pages/Crm/Crm";
 
 const App = () => {
 
@@ -56,6 +57,11 @@ const App = () => {
             <RouteGuard user={user!}>
               <EditUserDetails />
             </RouteGuard>} />
+
+          {user?.isAdmin && <Route path="/crm" element={
+            <RouteGuard user={user!}>
+              <Crm />
+            </RouteGuard>} />}
 
           <Route path="/favorites" element={<Favorites />} />
 

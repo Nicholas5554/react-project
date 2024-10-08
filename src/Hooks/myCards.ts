@@ -25,7 +25,7 @@ export const myCards = () => {
 
 
     const searchCards = () => {
-        return cards.filter((item: TCard) => item.title.includes(searchWord));
+        return cards.filter((item: TCard) => item.title.includes(searchWord.toLocaleLowerCase()));
     };
 
     const isLikedCard = (card: TCard) => {

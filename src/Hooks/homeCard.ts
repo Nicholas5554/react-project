@@ -12,7 +12,7 @@ export const homeCardFuncs = () => {
     const [cards, cardsSet] = useState<TCard[]>([]);
 
     const searchWord = useSelector((state: TRootState) => state.searchSlice.search);
-    const user = useSelector((state: TRootState) => state.userSlice)
+    const user = useSelector((state: TRootState) => state.userSlice);
 
     const searchCards = () => {
         return cards?.filter((item: TCard) => item.title.includes(searchWord.toLocaleLowerCase()));
@@ -41,6 +41,7 @@ export const homeCardFuncs = () => {
     }
 
     const likeDislikeCard = async (card: TCard) => {
+
         try {
             const res = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + card._id)
             if (res.status === 200) {

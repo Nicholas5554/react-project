@@ -17,7 +17,7 @@ const Profile = () => {
                 <Card className="flex items-center justify-center w-auto">
                     <img src={user?.image.url} alt={user?.image.alt} className="object-fill w-72 h-[200px]  m-auto" />
                     <h1>{user?.name.first}</h1>
-                    <h3 className="text-[14px]">{user?.email}</h3>
+                    <h3>{user?.address.country}</h3>
                     <p>{user?.isBusiness ? "Business User" : "Personal User"}</p>
                     <p>{user?.phone}</p>
                 </Card>

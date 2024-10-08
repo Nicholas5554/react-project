@@ -67,7 +67,7 @@ export const editCard = () => {
         try {
             axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
             const res = await axios.put("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + cards?._id, form);
-            console.log(`res:`, res);
+            setCards(res.data);
             Swal.fire({
                 title: 'Success!',
                 text: 'Card edited successfully',
