@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react"
 import { TUser } from "../../Types/TUser"
 import axios from "axios"
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { TRootState } from "../../Store/bigPie";
 import Swal from "sweetalert2";
-import { userActions } from "../../Store/userSlice";
-import { Card } from "flowbite-react";
 import { FaTrash } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
 
@@ -13,14 +11,12 @@ import { FaPencil } from "react-icons/fa6";
 
 const Crm = () => {
 
-    const dispatch = useDispatch();
-
     const [users, setUsers] = useState<TUser[]>([]);
 
     const searchWord = useSelector((state: TRootState) => state.searchSlice.search);
 
     const searchUsers = () => {
-        return users?.filter((item: TUser) => item.name.first.includes(searchWord.toLocaleLowerCase()));
+        return users?.filter((item: TUser) => item.name.first.includes(searchWord));
     }
 
     const getUsers = async () => {
@@ -49,9 +45,8 @@ const Crm = () => {
 
                 try {
                     axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
-                    const res = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + user?._id, { business: !user?.isBusiness });
-                    setUsers(res.data);
-                    dispatch(userActions.login(res.data));
+                    await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + user?._id, { business: !user?.isBusiness });
+                    getUsers();
 
                     Swal.fire({
                         title: "Success",
@@ -92,9 +87,8 @@ const Crm = () => {
             if (result.isConfirmed) {
                 try {
                     axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
-                    const res = await axios.delete("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + user._id);
-                    setUsers(res.data);
-                    dispatch(userActions.login(res.data));
+                    await axios.delete("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + user._id);
+                    getUsers();
 
                     Swal.fire({
                         title: "Success",
@@ -124,12 +118,68 @@ const Crm = () => {
 
     useEffect(() => {
         getUsers()
-    }, [])
+    }, []);
 
     return (
-        <div className="flex flex-col items-center justify-start gap-2 text-center dark:text-white">
+        <>
+            <div className="relative overflow-x-auto">
+                <table className="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
+                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">Username</th>
+                            <th scope="col" className="px-6 py-3">Email</th>
+                            <th scope="col" className="px-6 py-3">Phone Number</th>
+                            <th scope="col" className="px-6 py-3">Biz Status</th>
+                            <th scope="col" className="px-6 py-3">Change Biz</th>
+                            <th scope="col" className="px-6 py-3">Delete Account</th>
+                        </tr>
+                    </thead>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 w-1/1">
+                    <tbody>
+                        {searchUsers().map((user: TUser) => (
+                            <tr key={user._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {user.name.first}
+                                </th>
+                                <td className="px-6 py-4">
+                                    {user.email}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {user.phone}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {user.isBusiness ? "Business" : "Personal"}
+                                </td>
+
+                                <td>
+                                    <FaPencil
+                                        size={20}
+                                        className="m-auto cursor-pointer "
+                                        onClick={() => patchBusinessStatus(user)}
+                                    />
+                                </td>
+
+                                <td>
+                                    <FaTrash
+                                        size={20}
+                                        onClick={() => deleteUser(user)}
+                                        className="m-auto cursor-pointer"
+                                    />
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </>
+    );
+};
+
+export default Crm
+
+
+
+{/*     <div className="flex flex-wrap items-center justify-center gap-4 w-1/1">
                 {searchUsers().map((user: TUser) => {
                     return (
                         <Card key={user._id} className="flex items-center justify-center w-auto text-center">
@@ -138,11 +188,7 @@ const Crm = () => {
                             <h3>{user.email}</h3>
                             <h3>{user.phone}</h3>
                             <h3>{user.isBusiness ? "Business" : "Personal"}</h3>
-                            {/* <FaPencil
-                                size={30}
-                                className="m-auto cursor-pointer"
-                                onClick={() => editUser(user)}
-                            /> */}
+
                             <FaPencil
                                 size={30}
                                 className="m-auto cursor-pointer"
@@ -156,9 +202,4 @@ const Crm = () => {
                         </Card>
                     )
                 })}
-            </div>
-        </div>
-    )
-}
-
-export default Crm
+            </div> */}
