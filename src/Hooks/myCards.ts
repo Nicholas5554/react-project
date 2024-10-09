@@ -10,7 +10,6 @@ export const myCards = () => {
     const [cards, setCards] = useState<TCard[]>([]);
     const nav = useNavigate();
     const searchWord = useSelector((state: TRootState) => state.searchSlice.search);
-    console.log(searchWord);
 
     const ToastSweet = Swal.mixin({
         toast: true,
@@ -145,7 +144,6 @@ export const myCards = () => {
         }
 
         const res = await axios.get('https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/my-cards');
-        console.log(res.data);
         setCards(res.data);
     }
 

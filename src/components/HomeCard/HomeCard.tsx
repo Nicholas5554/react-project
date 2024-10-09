@@ -22,6 +22,7 @@ const HomeCard = () => {
                             <img src={card.image.url} alt={card.image.alt} className="object-fill m-auto w-72 h-[200px] cursor-pointer" onClick={() => navToCard(card._id)} />
                             <h1>{card.title}</h1>
                             <h3>{card.subtitle}</h3>
+                            <h3>{card.phone}</h3>
                             {user.user && < FaHeart
                                 size={35}
                                 className="m-auto cursor-pointer"

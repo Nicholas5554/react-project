@@ -34,7 +34,6 @@ export const homeCardFuncs = () => {
         try {
             const res = await axios.get('https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards');
             cardsSet(res.data);
-            console.log(res.data);
         } catch (err: any) {
             console.log('error:', err.data);
         }

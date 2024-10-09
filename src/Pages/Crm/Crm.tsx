@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { TUser } from "../../Types/TUser"
 import axios from "axios"
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { TRootState } from "../../Store/bigPie";
 import Swal from "sweetalert2";
@@ -14,8 +13,6 @@ import { FaPencil } from "react-icons/fa6";
 
 const Crm = () => {
 
-    const nav = useNavigate();
-
     const dispatch = useDispatch();
 
     const [users, setUsers] = useState<TUser[]>([]);
@@ -24,14 +21,6 @@ const Crm = () => {
 
     const searchUsers = () => {
         return users?.filter((item: TUser) => item.name.first.includes(searchWord.toLocaleLowerCase()));
-    }
-
-    const navToUser = (user: TUser) => {
-        nav("/profile/" + user._id);
-    }
-
-    const editUser = (user: TUser) => {
-        nav("/edituser/" + user._id);
     }
 
     const getUsers = async () => {
@@ -54,13 +43,14 @@ const Crm = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: `Change this account status to ${user?.isBusiness ? "personal" : "business"} ?`
+            confirmButtonText: `Change this account status to ${user?.isBusiness ? "personal" : "business"}`
         }).then(async (result) => {
             if (result.isConfirmed) {
 
                 try {
                     axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
                     const res = await axios.patch("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + user?._id, { business: !user?.isBusiness });
+                    setUsers(res.data);
                     dispatch(userActions.login(res.data));
 
                     Swal.fire({
@@ -104,6 +94,7 @@ const Crm = () => {
                     axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
                     const res = await axios.delete("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/" + user._id);
                     setUsers(res.data);
+                    dispatch(userActions.login(res.data));
 
                     Swal.fire({
                         title: "Success",
@@ -142,16 +133,16 @@ const Crm = () => {
                 {searchUsers().map((user: TUser) => {
                     return (
                         <Card key={user._id} className="flex items-center justify-center w-auto text-center">
-                            <img src={user.image.url} alt={user.image.alt} className="object-fill m-auto w-72 h-[200px] cursor-pointer" onClick={() => navToUser(user)} />
+                            <img src={user.image.url} alt={user.image.alt} className="object-fill m-auto w-72 h-[200px]" />
                             <h1>{user.name.first}</h1>
                             <h3>{user.email}</h3>
                             <h3>{user.phone}</h3>
                             <h3>{user.isBusiness ? "Business" : "Personal"}</h3>
-                            <FaPencil
+                            {/* <FaPencil
                                 size={30}
                                 className="m-auto cursor-pointer"
                                 onClick={() => editUser(user)}
-                            />
+                            /> */}
                             <FaPencil
                                 size={30}
                                 className="m-auto cursor-pointer"
