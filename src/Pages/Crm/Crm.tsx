@@ -6,6 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { TRootState } from "../../Store/bigPie";
 import Swal from "sweetalert2";
 import { userActions } from "../../Store/userSlice";
+import { Card } from "flowbite-react";
+import { FaTrash } from "react-icons/fa";
+import { FaPencil } from "react-icons/fa6";
+
 
 
 const Crm = () => {
@@ -132,8 +136,36 @@ const Crm = () => {
     }, [])
 
     return (
-        <div>
-            <h1>Crm</h1>
+        <div className="flex flex-col items-center justify-start gap-2 text-center dark:text-white">
+
+            <div className="flex flex-wrap items-center justify-center gap-4 w-1/1">
+                {searchUsers().map((user: TUser) => {
+                    return (
+                        <Card key={user._id} className="flex items-center justify-center w-auto text-center">
+                            <img src={user.image.url} alt={user.image.alt} className="object-fill m-auto w-72 h-[200px] cursor-pointer" onClick={() => navToUser(user)} />
+                            <h1>{user.name.first}</h1>
+                            <h3>{user.email}</h3>
+                            <h3>{user.phone}</h3>
+                            <h3>{user.isBusiness ? "Business" : "Personal"}</h3>
+                            <FaPencil
+                                size={30}
+                                className="m-auto cursor-pointer"
+                                onClick={() => editUser(user)}
+                            />
+                            <FaPencil
+                                size={30}
+                                className="m-auto cursor-pointer"
+                                onClick={() => patchBusinessStatus(user)}
+                            />
+                            <FaTrash
+                                size={30}
+                                onClick={() => deleteUser(user)}
+                                className="m-auto cursor-pointer"
+                            />
+                        </Card>
+                    )
+                })}
+            </div>
         </div>
     )
 }
