@@ -30,6 +30,15 @@ export const homeCardFuncs = () => {
         nav("/card/" + id);
     }
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const cardsPerPage = 8;
+    const onPageChange = (page: number) => setCurrentPage(page);
+
+    const indexOfLastCard = currentPage * cardsPerPage;
+    const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+    const currentCards = searchCards().slice(indexOfFirstCard, indexOfLastCard);
+    const totalPages = Math.ceil(searchCards().length / cardsPerPage);
+
     const fetchCards = async () => {
         try {
             const res = await axios.get('https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards');
@@ -100,6 +109,10 @@ export const homeCardFuncs = () => {
         likedCard,
         navToCard,
         likeDislikeCard,
-        user
+        user,
+        currentPage,
+        totalPages,
+        onPageChange,
+        currentCards
     })
 }

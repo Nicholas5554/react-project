@@ -1,4 +1,4 @@
-import { Card } from "flowbite-react";
+import { Card, Pagination } from "flowbite-react";
 import { BiPlus } from "react-icons/bi";
 import { FaHeart, FaTrash } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
@@ -11,10 +11,13 @@ const Mycards = () => {
         navToCard,
         likeDislikeCard,
         isLikedCard,
-        searchCards,
         deleteCard,
         editCard,
-        navToCreateCard
+        navToCreateCard,
+        currentPage,
+        totalPages,
+        onPageChange,
+        currentCards
     } = myCards();
 
     return (
@@ -24,7 +27,7 @@ const Mycards = () => {
             {user.isLoggedIn && <p className="flex flex-row items-center justify-center gap-2 text-lg">Made by you <FaHeart color="red" /> </p>}
 
             <div className="flex flex-wrap items-center justify-center gap-4 w-1/1">
-                {searchCards().map((card: TCard) => {
+                {currentCards.map((card: TCard) => {
                     return (
                         <Card key={card._id} className="flex items-center justify-center w-auto text-center">
                             <img src={card.image.url} alt={card.image.alt} className="object-fill w-72 h-[200px] cursor-pointer" onClick={() => navToCard(card._id)} />
@@ -50,6 +53,13 @@ const Mycards = () => {
                     )
                 })}
             </div>
+
+            <Pagination className="mb-5"
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={onPageChange}
+                showIcons
+            />
             {user.user?.isBusiness && <div className="flex items-center justify-center p-3 text-white transition-colors bg-gray-500 rounded-full cursor-pointer hover:bg-gray-600" onClick={navToCreateCard}>
                 <p className="text-lg font-semibold">Create a new card</p>
                 <BiPlus

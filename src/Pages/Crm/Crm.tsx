@@ -123,6 +123,7 @@ const Crm = () => {
     return (
         <>
             <div className="relative overflow-x-auto">
+                <h1 className="mb-2 text-4xl font-bold dark:text-white">Users Chart</h1>
                 <table className="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -135,26 +136,26 @@ const Crm = () => {
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody className="">
                         {searchUsers().map((user: TUser) => (
                             <tr key={user._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {user.name.first}
                                 </th>
-                                <td className="px-6 py-4">
+                                <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                     {user.email}
                                 </td>
-                                <td className="px-6 py-4">
+                                <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                     {user.phone}
                                 </td>
-                                <td className="px-6 py-4">
+                                <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                     {user.isBusiness ? "Business" : "Personal"}
                                 </td>
 
                                 <td>
                                     <FaPencil
                                         size={20}
-                                        className="m-auto cursor-pointer "
+                                        className="m-auto text-gray-900 cursor-pointer whitespace-nowrap dark:text-white"
                                         onClick={() => patchBusinessStatus(user)}
                                     />
                                 </td>
@@ -162,8 +163,8 @@ const Crm = () => {
                                 <td>
                                     <FaTrash
                                         size={20}
+                                        className="m-auto text-gray-900 cursor-pointer whitespace-nowrap dark:text-white"
                                         onClick={() => deleteUser(user)}
-                                        className="m-auto cursor-pointer"
                                     />
                                 </td>
                             </tr>

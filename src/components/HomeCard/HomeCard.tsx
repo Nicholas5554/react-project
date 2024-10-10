@@ -1,22 +1,25 @@
 import { FaHeart } from "react-icons/fa";
 import { homeCardFuncs } from "../../Hooks/homeCard";
-import { Card } from "flowbite-react";
+import { Card, Pagination } from "flowbite-react";
 
 const HomeCard = () => {
 
     const {
-        searchCards,
         likedCard,
         navToCard,
         likeDislikeCard,
-        user
+        user,
+        currentPage,
+        totalPages,
+        onPageChange,
+        currentCards
     } = homeCardFuncs();
 
     return (
         <div className="flex flex-col items-center justify-start gap-2 text-center dark:text-white">
 
             <div className="flex flex-wrap items-center justify-center gap-4 w-1/1">
-                {searchCards().map((card: TCard) => {
+                {currentCards.map((card: TCard) => {
                     return (
                         <Card key={card._id} className="flex items-center justify-center w-auto text-center">
                             <img src={card.image.url} alt={card.image.alt} className="object-fill m-auto w-72 h-[200px] cursor-pointer" onClick={() => navToCard(card._id)} />
@@ -33,6 +36,12 @@ const HomeCard = () => {
                     )
                 })}
             </div>
+            <Pagination className="mb-5"
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={onPageChange}
+                showIcons
+            />
         </div>
     )
 }
