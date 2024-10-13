@@ -32,7 +32,7 @@ const Mycards = () => {
                         <Card key={card._id} className="flex items-center justify-center w-auto text-center">
                             <img src={card.image.url} alt={card.image.alt} className="object-fill w-72 h-[200px] cursor-pointer" onClick={() => navToCard(card._id)} />
                             <h1>{card.title}</h1>
-                            <h3 className="text-[14px]">{card.subtitle}</h3>
+                            <h3>{card.subtitle}</h3>
                             {user.user && < FaHeart
                                 size={35}
                                 className="m-auto cursor-pointer "

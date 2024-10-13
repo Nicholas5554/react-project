@@ -1,6 +1,6 @@
 const About = () => {
     return (
-        <div className="text-center dark:text-white w-[90vw]">
+        <div className="text-center dark:text-white w-[90vw] text-lg">
             <h1 className="font-bold text-teal-500">About User Cards Manager</h1>
             <p className="size-auto">
                 The User Cards Manager is a React-based application designed to help you efficiently manage user profiles.
