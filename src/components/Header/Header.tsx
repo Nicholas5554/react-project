@@ -14,16 +14,16 @@ const Header = () => {
     } = header();
 
     return (
-        <Navbar fluid className="list-none">
+        <Navbar fluid className="list-none shadow bg-slate-200 dark:bg-gray-900">
             <Navbar.Link as={Link} href="/" to="/" active={loc === '/'} className="flex flex-row gap-2">
-                <img src="../public/dark-mouse.jpeg" alt="dark-mouse" className="w-[30px] h-[30px]" />
-                <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">React Project</span>
+                <img src="../public/dark-mouse.jpeg" alt="dark-mouse" className="w-[40px] h-[40px]" />
+                <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">CardGen</span>
             </Navbar.Link>
 
             <Navbar.Toggle />
             <Navbar.Collapse>
 
-                <Navbar.Link as={Link} href="/" to="/" active={loc === '/'} className="text-lg ">
+                <Navbar.Link as={Link} href="/" to="/" active={loc === '/'} className="text-lg">
                     Home
                 </Navbar.Link>
 

@@ -18,7 +18,7 @@ const Favorites = () => {
     return (
         <div className="flex flex-col items-center justify-start gap-2 text-center dark:text-white">
             <h1 className="text-2xl">Favorites</h1>
-            {user.isLoggedIn && <p className="flex flex-row items-center justify-center gap-2 text-lg">The one's that get more <FaHeart color="red" /> </p>}
+            {user.isLoggedIn && <p className="flex flex-row items-center justify-center gap-2 text-xl">The one's that get more <FaHeart color="red" /> </p>}
 
             <div className="flex flex-wrap items-center justify-center gap-4 w-1/1">
                 {currentCards.map((card: TCard) => {
