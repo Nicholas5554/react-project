@@ -75,6 +75,7 @@ export const favorites = () => {
                         icon: 'success',
                         toast: true,
                     });
+
                 } else {
                     newCards[cardIndex].likes.splice(userIndex, 1);
                     ToastSweet.fire({
@@ -97,8 +98,6 @@ export const favorites = () => {
             })
         }
     }
-
-
 
     useEffect(() => {
         fetchCards();
