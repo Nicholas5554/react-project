@@ -6,8 +6,8 @@ const CardDetails = () => {
 
     return (
         <div className="flex flex-col items-center justify-start gap-4 dark:text-white w-2/7 h-[100vh]">
-            <h1>{card && card?.title!}</h1>
             <img src={card?.image.url} alt={card?.image.alt} className="w-2/7 h-1/2" />
+            <h1>{card && card?.title!}</h1>
             <h3> {card && card?.subtitle!}</h3>
             <p>Email: {card && card?.email!}</p>
             <p>Phone: {card && card.phone!}</p>
