@@ -1,7 +1,7 @@
 import { TUser } from "../../Types/TUser"
 import { FaTrash } from "react-icons/fa";
-import { FaPencil } from "react-icons/fa6";
 import { crm } from "../../Hooks/crm";
+import { FaUser } from "react-icons/fa";
 
 
 
@@ -45,9 +45,9 @@ const Crm = () => {
                                 </td>
 
                                 <td>
-                                    <FaPencil
+                                    <FaUser
                                         size={20}
-                                        className="m-auto text-gray-900 cursor-pointer whitespace-nowrap dark:text-white"
+                                        className="m-auto text-gray-900 cursor-pointer dark:text-white whitespace-nowrap hover:text-slate-600 active:text-slate-500 dark:hover:text-slate-300 dark:active:text-slate-400"
                                         onClick={() => patchBusinessStatus(user)}
                                     />
                                 </td>
@@ -55,7 +55,7 @@ const Crm = () => {
                                 <td>
                                     <FaTrash
                                         size={20}
-                                        className="m-auto text-gray-900 cursor-pointer whitespace-nowrap dark:text-white"
+                                        className="m-auto text-gray-900 cursor-pointer whitespace-nowrap dark:text-white hover:text-slate-600 active:text-slate-500 dark:hover:text-slate-300 dark:active:text-slate-400"
                                         onClick={() => deleteUser(user)}
                                     />
                                 </td>

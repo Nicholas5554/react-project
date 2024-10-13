@@ -35,19 +35,19 @@ const Mycards = () => {
                             <h3 className="text-[14px]">{card.subtitle}</h3>
                             {user.user && < FaHeart
                                 size={35}
-                                className="m-auto cursor-pointer"
+                                className="m-auto cursor-pointer "
                                 color={isLikedCard(card) ? "red" : "black"}
                                 onClick={() => likeDislikeCard(card)}
                             />}
                             <FaPencil
                                 size={30}
-                                className="m-auto cursor-pointer"
+                                className="m-auto cursor-pointer hover:text-slate-600 active:text-slate-500 dark:hover:text-slate-300 dark:active:text-slate-400"
                                 onClick={() => editCard(card)}
                             />
                             <FaTrash
                                 size={30}
                                 onClick={() => deleteCard(card)}
-                                className="m-auto cursor-pointer"
+                                className="m-auto cursor-pointer hover:text-slate-600 active:text-slate-500 dark:hover:text-slate-300 dark:active:text-slate-400"
                             />
                         </Card>
                     )
@@ -60,7 +60,7 @@ const Mycards = () => {
                 onPageChange={onPageChange}
                 showIcons
             />
-            {user.user?.isBusiness && <div className="flex items-center justify-center p-3 text-white transition-colors bg-gray-500 rounded-full cursor-pointer hover:bg-gray-600" onClick={navToCreateCard}>
+            {user.user?.isBusiness && <div className="flex items-center justify-center p-3 text-white transition-colors bg-gray-500 rounded-full cursor-pointer hover:bg-gray-600 active:bg-gray-700" onClick={navToCreateCard}>
                 <p className="text-lg font-semibold">Create a new card</p>
                 <BiPlus
                     size={35}
