@@ -65,7 +65,11 @@ const Header = () => {
 
 
                 {user && (
-                    <Navbar.Link className="text-lg cursor-pointer" onClick={logout} color="red">
+                    <Navbar.Link className="text-lg cursor-pointer"
+                        onClick={logout}
+                        style={{
+                            color: "crimson", fontWeight: "bold"
+                        }}>
                         Logout
                     </Navbar.Link>
                 )}
