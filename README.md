@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+CardGen (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+to project : https://react-project-jcck.onrender.com/
 
-Currently, two official plugins are available:
+This is a React-based project where users can log into a website, like or dislike cards, create new cards, edit existing ones, and manage their profile data. The project uses an API for handling user information and card data.
+Features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    User Authentication: Users can register, log in, and log out using the API.
+    Card Interaction: Users can like/dislike cards, create new cards, and edit or delete their own cards.
+    Profile Management: Users can update their profile information (e.g., username, address) and delete their user on the profile page.
+    CRM Page (Admin Only): Admins can access a dedicated CRM page to:
 
-## Expanding the ESLint configuration
+    View data of all registered users.
+    Change the account status to either Business or Personal.
+    Delete user accounts.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Technologies Used
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+    React: Front-end library for building the user interface.
+    React Router: For handling navigation between different pages.
+    API: For storing user data, authentication, and managing card data (fetch, create, edit, delete).
+    Axios: For making HTTP requests to the API.
+    State Management: Local state management using React hooks (e.g., useState, useEffect).
+    Form Handling: react-hook-form for managing form states.
+    TypeScript: Type safety with @typescript-eslint plugins and TypeScript definitions.
+    Styling: Tailwind CSS and styled-components for dynamic and responsive UI design.
+    JWT: JSON Web Tokens for secure user authentication and session management.
+    SweetAlert2: For beautiful, customizable alerts and popups.
+    React Icons: For a wide variety of icons used across the project.
