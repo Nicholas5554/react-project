@@ -144,11 +144,11 @@ export const editUser = () => {
         Swal.fire({
             title: "Are you sure?",
             icon: "warning",
-            text: "your account will be deleted",
+            text: "Your account will be deleted",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "yes delete my account"
+            confirmButtonText: "Yes, delete my account"
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {

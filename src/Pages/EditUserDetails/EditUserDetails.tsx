@@ -174,7 +174,7 @@ const EditUserDetails = () => {
             </Button>
 
             <Button className="w-full dark:text-white" onClick={patchBusinessStatus}>
-                Change business status?
+                Change Business status?
             </Button>
 
             <button type="button" className="w-full h-10 text-sm text-white transition-colors bg-red-600 rounded-md hover:bg-red-800" onClick={deleteUser}>
