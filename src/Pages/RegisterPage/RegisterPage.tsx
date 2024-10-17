@@ -24,7 +24,7 @@ const RegisterPage = () => {
                         label="First Name"
                         {...register("name.first")}
                     />
-                    <span className="text-sm text-red-500">{errors.name?.first?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.name?.first?.message}</span>
                 </div>
 
                 <div className="flex flex-col">
@@ -34,7 +34,7 @@ const RegisterPage = () => {
                         label="Middle Name"
                         {...register("name.middle")}
                     />
-                    <span className="text-sm text-red-500 ">{errors.name?.middle?.message}</span>
+                    <span className="w-32 text-sm text-red-500 ">{errors.name?.middle?.message}</span>
                 </div>
             </div>
 
@@ -46,7 +46,7 @@ const RegisterPage = () => {
                         label="Last Name"
                         {...register("name.last")}
                     />
-                    <span className="text-sm text-red-500">{errors.name?.last?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.name?.last?.message}</span>
                 </div>
 
                 <div className="flex flex-col">
@@ -56,7 +56,7 @@ const RegisterPage = () => {
                         label="phone"
                         {...register("phone")}
                     />
-                    <span className="text-sm text-red-500">{errors.phone?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.phone?.message}</span>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@ const RegisterPage = () => {
                         label="Email"
                         {...register("email")}
                     />
-                    <span className="text-sm text-red-500">{errors.email?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.email?.message}</span>
                 </div>
 
                 <div className="flex flex-col">
@@ -78,7 +78,7 @@ const RegisterPage = () => {
                         label="Password"
                         {...register("password")}
                     />
-                    <span className="text-sm text-red-500">{errors.password?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.password?.message}</span>
                 </div>
             </div>
 
@@ -90,7 +90,7 @@ const RegisterPage = () => {
                         label="image url"
                         {...register("image.url")}
                     />
-                    <span className="text-sm text-red-500">{errors.image?.url?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.image?.url?.message}</span>
                 </div>
 
                 <div className="flex flex-col">
@@ -100,7 +100,7 @@ const RegisterPage = () => {
                         label="image alt"
                         {...register("image.alt")}
                     />
-                    <span className="text-sm text-red-500">{errors.image?.alt?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.image?.alt?.message}</span>
                 </div>
             </div>
 
@@ -112,7 +112,7 @@ const RegisterPage = () => {
                         label="state"
                         {...register("address.state")}
                     />
-                    <span className="text-sm text-red-500">{errors.address?.state?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.address?.state?.message}</span>
                 </div>
 
                 <div className="flex flex-col">
@@ -122,7 +122,7 @@ const RegisterPage = () => {
                         label="country"
                         {...register("address.country")}
                     />
-                    <span className="text-sm text-red-500">{errors.address?.country?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.address?.country?.message}</span>
                 </div>
             </div>
 
@@ -134,7 +134,7 @@ const RegisterPage = () => {
                         label="city"
                         {...register("address.city")}
                     />
-                    <span className="text-sm text-red-500">{errors.address?.city?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.address?.city?.message}</span>
                 </div>
 
                 <div className="flex flex-col">
@@ -144,7 +144,7 @@ const RegisterPage = () => {
                         label="street"
                         {...register("address.street")}
                     />
-                    <span className="text-sm text-red-500">{errors.address?.street?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.address?.street?.message}</span>
                 </div>
             </div>
 
@@ -156,7 +156,7 @@ const RegisterPage = () => {
                         label="houseNumber"
                         {...register("address.houseNumber")}
                     />
-                    <span className="text-sm text-red-500">{errors.address?.houseNumber?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.address?.houseNumber?.message}</span>
                 </div>
 
                 <div className="flex flex-col">
@@ -166,7 +166,7 @@ const RegisterPage = () => {
                         label="zip"
                         {...register("address.zip")}
                     />
-                    <span className="text-sm text-red-500">{errors.address?.zip?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.address?.zip?.message}</span>
                 </div>
             </div>
 

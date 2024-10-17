@@ -21,7 +21,7 @@ const EditCard = () => {
                 <h1 className="text-2xl font-bold dark:text-white">Edit card</h1>
 
                 <div className="flex flex-row justify-around gap-11 w-80">
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="text"
                             variant="standard"
@@ -29,10 +29,10 @@ const EditCard = () => {
                             defaultValue={cards?.title}
                             {...register("title")}
                         />
-                        <span className="text-sm text-red-500">{errors.title?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.title?.message}</span>
                     </div>
 
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="text"
                             variant="standard"
@@ -40,12 +40,12 @@ const EditCard = () => {
                             defaultValue={cards?.subtitle}
                             {...register("subtitle")}
                         />
-                        <span className="text-sm text-red-500">{errors.subtitle?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.subtitle?.message}</span>
                     </div>
                 </div>
 
                 <div className="flex flex-row justify-around gap-11 w-80">
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="text"
                             variant="standard"
@@ -53,10 +53,10 @@ const EditCard = () => {
                             defaultValue={cards?.description}
                             {...register("description")}
                         />
-                        <span className="text-sm text-red-500">{errors.description?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.description?.message}</span>
                     </div>
 
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="text"
                             variant="standard"
@@ -65,12 +65,12 @@ const EditCard = () => {
                             {...register("phone")}
                         />
 
-                        <span className="text-sm text-red-500">{errors.phone?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.phone?.message}</span>
                     </div>
                 </div>
 
                 <div className="flex flex-row justify-around gap-11 w-80">
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="text"
                             variant="standard"
@@ -78,10 +78,10 @@ const EditCard = () => {
                             defaultValue={cards?.email}
                             {...register("email")}
                         />
-                        <span className="text-sm text-red-500">{errors.email?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.email?.message}</span>
                     </div>
 
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="text"
                             variant="standard"
@@ -89,12 +89,12 @@ const EditCard = () => {
                             defaultValue={cards?.web}
                             {...register("web")}
                         />
-                        <span className="text-sm text-red-500">{errors.web?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.web?.message}</span>
                     </div>
                 </div>
 
                 <div className="flex flex-row justify-around gap-11 w-80">
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="text"
                             variant="standard"
@@ -102,10 +102,10 @@ const EditCard = () => {
                             defaultValue={cards?.image?.url}
                             {...register("image.url")}
                         />
-                        <span className="text-sm text-red-500">{errors.image?.url?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.image?.url?.message}</span>
                     </div>
 
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="text"
                             variant="standard"
@@ -113,12 +113,12 @@ const EditCard = () => {
                             defaultValue={cards?.image?.alt}
                             {...register("image.alt")}
                         />
-                        <span className="text-sm text-red-500">{errors.image?.alt?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.image?.alt?.message}</span>
                     </div>
                 </div>
 
                 <div className="flex flex-row justify-around gap-11 w-80">
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="text"
                             variant="standard"
@@ -126,10 +126,10 @@ const EditCard = () => {
                             defaultValue={cards?.address?.state}
                             {...register("address.state")}
                         />
-                        <span className="text-sm text-red-500">{errors.address?.state?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.address?.state?.message}</span>
                     </div>
 
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="text"
                             variant="standard"
@@ -137,12 +137,12 @@ const EditCard = () => {
                             defaultValue={cards?.address?.country}
                             {...register("address.country")}
                         />
-                        <span className="text-sm text-red-500">{errors.address?.country?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.address?.country?.message}</span>
                     </div>
                 </div>
 
                 <div className="flex flex-row justify-around gap-11 w-80">
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="text"
                             variant="standard"
@@ -150,10 +150,10 @@ const EditCard = () => {
                             defaultValue={cards?.address?.city}
                             {...register("address.city")}
                         />
-                        <span className="text-sm text-red-500">{errors.address?.city?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.address?.city?.message}</span>
                     </div>
 
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="text"
                             variant="standard"
@@ -161,12 +161,12 @@ const EditCard = () => {
                             defaultValue={cards?.address?.street}
                             {...register("address.street")}
                         />
-                        <span className="text-sm text-red-500">{errors.address?.street?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.address?.street?.message}</span>
                     </div>
                 </div>
 
                 <div className="flex flex-row justify-around gap-11 w-80">
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="number"
                             variant="standard"
@@ -174,10 +174,10 @@ const EditCard = () => {
                             defaultValue={cards?.address?.houseNumber}
                             {...register("address.houseNumber")}
                         />
-                        <span className="text-sm text-red-500">{errors.address?.houseNumber?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.address?.houseNumber?.message}</span>
                     </div>
 
-                    <div className="flex flex-col w-[100%]">
+                    <div className="flex flex-col">
                         <FloatingLabel className="dark:text-white"
                             type="number"
                             variant="standard"
@@ -185,7 +185,7 @@ const EditCard = () => {
                             defaultValue={cards?.address?.zip}
                             {...register("address.zip")}
                         />
-                        <span className="text-sm text-red-500">{errors.address?.zip?.message}</span>
+                        <span className="w-32 text-sm text-red-500">{errors.address?.zip?.message}</span>
                     </div>
                 </div>
 

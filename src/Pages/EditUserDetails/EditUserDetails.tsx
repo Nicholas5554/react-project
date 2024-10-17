@@ -22,7 +22,7 @@ const EditUserDetails = () => {
             <h1 className="text-2xl font-bold dark:text-white">Edit User Details</h1>
 
             <div className="flex flex-row justify-around gap-11 w-80">
-                <div className="flex flex-col w-[100%]">
+                <div className="flex flex-col">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -30,10 +30,10 @@ const EditUserDetails = () => {
                         defaultValue={userInfo?.name.first}
                         {...register("name.first")}
                     />
-                    <span className="text-sm text-red-500">{errors.name?.first?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.name?.first?.message}</span>
                 </div>
 
-                <div className="flex flex-col w-[100%]">
+                <div className="flex flex-col">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -41,12 +41,12 @@ const EditUserDetails = () => {
                         defaultValue={userInfo?.name.middle}
                         {...register("name.middle")}
                     />
-                    <span className="text-sm text-red-500">{errors.name?.middle?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.name?.middle?.message}</span>
                 </div>
             </div>
 
             <div className="flex flex-row justify-around gap-11 w-80">
-                <div className="flex flex-col w-[100%]">
+                <div className="flex flex-col">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -54,10 +54,10 @@ const EditUserDetails = () => {
                         defaultValue={userInfo?.name.last}
                         {...register("name.last")}
                     />
-                    <span className="text-sm text-red-500">{errors.name?.last?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.name?.last?.message}</span>
                 </div>
 
-                <div className="flex flex-col w-[100%]">
+                <div className="flex flex-col">
                     <FloatingLabel className="dark:text-white"
                         type="phone"
                         variant="standard"
@@ -65,12 +65,12 @@ const EditUserDetails = () => {
                         defaultValue={userInfo?.phone}
                         {...register("phone")}
                     />
-                    <span className="text-sm text-red-500">{errors.phone?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.phone?.message}</span>
                 </div>
             </div>
 
             <div className="flex flex-row justify-around gap-11 w-80">
-                <div className="flex flex-col w-[100%]">
+                <div className="flex flex-col">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -78,10 +78,10 @@ const EditUserDetails = () => {
                         defaultValue={userInfo?.image.url}
                         {...register("image.url")}
                     />
-                    <span className="text-sm text-red-500">{errors.image?.url?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.image?.url?.message}</span>
                 </div>
 
-                <div className="flex flex-col w-[100%]">
+                <div className="flex flex-col">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -89,12 +89,12 @@ const EditUserDetails = () => {
                         defaultValue={userInfo?.image.alt}
                         {...register("image.alt")}
                     />
-                    <span className="text-sm text-red-500">{errors.image?.alt?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.image?.alt?.message}</span>
                 </div>
             </div>
 
             <div className="flex flex-row justify-around gap-11 w-80">
-                <div className="flex flex-col w-[100%]">
+                <div className="flex flex-col">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -102,10 +102,10 @@ const EditUserDetails = () => {
                         defaultValue={userInfo?.address.state}
                         {...register("address.state")}
                     />
-                    <span className="text-sm text-red-500">{errors.address?.state?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.address?.state?.message}</span>
                 </div>
 
-                <div className="flex flex-col w-[100%]">
+                <div className="flex flex-col">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -113,12 +113,12 @@ const EditUserDetails = () => {
                         defaultValue={userInfo?.address.country}
                         {...register("address.country")}
                     />
-                    <span className="text-sm text-red-500">{errors.address?.country?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.address?.country?.message}</span>
                 </div>
             </div>
 
             <div className="flex flex-row justify-around gap-11 w-80">
-                <div className="flex flex-col w-[100%]">
+                <div className="flex flex-col">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -126,10 +126,10 @@ const EditUserDetails = () => {
                         defaultValue={userInfo?.address.city}
                         {...register("address.city")}
                     />
-                    <span className="text-sm text-red-500">{errors.address?.city?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.address?.city?.message}</span>
                 </div>
 
-                <div className="flex flex-col w-[100%]">
+                <div className="flex flex-col">
                     <FloatingLabel className="dark:text-white"
                         type="text"
                         variant="standard"
@@ -137,12 +137,12 @@ const EditUserDetails = () => {
                         defaultValue={userInfo?.address.street}
                         {...register("address.street")}
                     />
-                    <span className="text-sm text-red-500">{errors.address?.street?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.address?.street?.message}</span>
                 </div>
             </div>
 
             <div className="flex flex-row justify-around gap-11 w-80">
-                <div className="flex flex-col w-[100%]">
+                <div className="flex flex-col">
                     <FloatingLabel className="dark:text-white"
                         type="number"
                         variant="standard"
@@ -150,10 +150,10 @@ const EditUserDetails = () => {
                         defaultValue={userInfo?.address.houseNumber}
                         {...register("address.houseNumber")}
                     />
-                    <span className="text-sm text-red-500">{errors.address?.houseNumber?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.address?.houseNumber?.message}</span>
                 </div>
 
-                <div className="flex flex-col w-[100%]">
+                <div className="flex flex-col">
                     <FloatingLabel className="dark:text-white"
                         type="number"
                         variant="standard"
@@ -161,7 +161,7 @@ const EditUserDetails = () => {
                         defaultValue={userInfo?.address.zip}
                         {...register("address.zip")}
                     />
-                    <span className="text-sm text-red-500">{errors.address?.zip?.message}</span>
+                    <span className="w-32 text-sm text-red-500">{errors.address?.zip?.message}</span>
                 </div>
             </div>
 
@@ -173,7 +173,7 @@ const EditUserDetails = () => {
                 Save Changes
             </Button>
 
-            <Button className="w-full  dark:text-white" onClick={patchBusinessStatus}>
+            <Button className="w-full dark:text-white" onClick={patchBusinessStatus}>
                 Change business status?
             </Button>
 

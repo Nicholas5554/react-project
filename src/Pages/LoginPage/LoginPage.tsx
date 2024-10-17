@@ -17,21 +17,27 @@ const LoginPage = () => {
 
             <h1 className="text-2xl font-bold dark:text-white">Login</h1>
 
-            <FloatingLabel className="dark:text-white"
-                type="email"
-                variant="standard"
-                label="Email"
-                {...register("email")}
-            />
-            <span className="text-sm text-red-500">{errors.email?.message}</span>
+            <div className="flex flex-col justify-around gap-11 w-60">
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="email"
+                        variant="standard"
+                        label="Email"
+                        {...register("email")}
+                    />
+                    <span className="w-32 text-sm text-red-500">{errors.email?.message}</span>
+                </div>
 
-            <FloatingLabel className="dark:text-white"
-                type="password"
-                variant="standard"
-                label="Password"
-                {...register("password")}
-            />
-            <span className="text-sm text-red-500">{errors.password?.message}</span>
+                <div className="flex flex-col">
+                    <FloatingLabel className="dark:text-white"
+                        type="password"
+                        variant="standard"
+                        label="Password"
+                        {...register("password")}
+                    />
+                    <span className="text-sm text-red-500 w-60">{errors.password?.message}</span>
+                </div>
+            </div>
 
             <Button type="submit" disabled={!isValid} className="w-full dark:text-white">
                 Login
