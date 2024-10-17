@@ -40,8 +40,7 @@ export const createCard = () => {
         try {
             axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
 
-            const res = await axios.post("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards", form);
-            console.log(res.data);
+            await axios.post("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards", form);
             Swal.fire({
                 title: 'Success!',
                 text: 'Card created successfully',
@@ -54,7 +53,6 @@ export const createCard = () => {
             nav("/mycards");
 
         } catch (error) {
-            console.log(`error:`, error);
 
             Swal.fire({
                 title: 'Error!',

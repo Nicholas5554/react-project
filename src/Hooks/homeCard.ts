@@ -44,7 +44,14 @@ export const homeCardFuncs = () => {
             const res = await axios.get('https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards');
             cardsSet(res.data);
         } catch (err: any) {
-            console.log('error:', err.data);
+            Swal.fire({
+                title: "Error",
+                text: "Could not get cards",
+                icon: "error",
+                timerProgressBar: true,
+                showConfirmButton: true,
+                confirmButtonColor: '#3085d6',
+            });
         }
     }
 
@@ -88,14 +95,14 @@ export const homeCardFuncs = () => {
                 cardsSet(newCards);
             }
         } catch (err) {
-            console.log("error: ", err);
             Swal.fire({
                 title: "Error",
-                text: "could not like/dislike",
+                text: "Could not like/unlike card",
                 icon: "error",
-                timer: 1500,
-                timerProgressBar: true
-            })
+                timerProgressBar: true,
+                showConfirmButton: true,
+                confirmButtonColor: '#3085d6',
+            });
         }
     }
 

@@ -51,7 +51,6 @@ export const editCard = () => {
             const res = await axios.get("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/" + id);
             setCards(res.data);
         } catch (err) {
-            console.log("error:", err);
             Swal.fire({
                 title: "error",
                 text: "could not get the data",
@@ -80,7 +79,6 @@ export const editCard = () => {
             nav("/mycards");
 
         } catch (error) {
-            console.log(`error:`, error);
             Swal.fire({
                 title: 'Error!',
                 text: 'Card edit failed',

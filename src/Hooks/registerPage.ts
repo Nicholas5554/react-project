@@ -40,11 +40,10 @@ export const registerPage = () => {
     });
 
     const submitForm = async (form: any) => {
-        console.log("Form data:", form);
+
 
         try {
-            const res = await axios.post("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users", form);
-            console.log(res.data);
+            await axios.post("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users", form);
             Swal.fire({
                 title: `Welcome ${form.name.first} ${form.name.last}`,
                 text: "successfully Registerd",
@@ -57,7 +56,6 @@ export const registerPage = () => {
 
         } catch (error) {
             if (axios.isAxiosError(error)) {
-                console.log("Error response:", error.response?.data);
                 Swal.fire({
                     title: "Error",
                     text: "User Already Registerd",
@@ -67,7 +65,6 @@ export const registerPage = () => {
                     confirmButtonColor: "#3085d6",
                 });
             } else {
-                console.log("Unexpected Error:", error);
                 Swal.fire({
                     title: "Error",
                     text: "Unexpected Error Please Try again",

@@ -25,13 +25,11 @@ export const profile = () => {
             dispatch(userActions.login(res.data));
 
         } catch (error) {
-            console.log(`error:`, error);
             Swal.fire({
                 title: "error",
                 text: "error getting your user",
                 icon: "error",
                 confirmButtonColor: '#3085d6',
-                timer: 1500,
                 timerProgressBar: true
             })
         }

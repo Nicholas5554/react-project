@@ -58,7 +58,6 @@ export const editUser = () => {
             dispatch(userActions.login(res.data));
 
         } catch (error) {
-            console.log(`error:`, error);
             Swal.fire({
                 title: "Error",
                 text: "Error getting your user",
@@ -86,7 +85,6 @@ export const editUser = () => {
             });
             navToProfile();
         } catch (error) {
-            console.log(`error:`, error);
             Swal.fire({
                 title: "error",
                 text: "error updating user",
@@ -125,7 +123,6 @@ export const editUser = () => {
                         timerProgressBar: true
                     });
                 } catch (error) {
-                    console.log(`error:`, error);
                     Swal.fire({
                         title: "error",
                         text: "error updating business status",
@@ -168,7 +165,6 @@ export const editUser = () => {
                     });
                     nav("/")
                 } catch (error) {
-                    console.log(`error:`, error);
                     Swal.fire({
                         title: "error",
                         text: "error deleting account try again",

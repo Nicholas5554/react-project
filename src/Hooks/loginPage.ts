@@ -51,7 +51,6 @@ export const loginPage = () => {
 
         } catch (error) {
             if (axios.isAxiosError(error)) {
-                console.log("Error response:", error.response?.data);
                 Swal.fire({
                     title: "Error",
                     text: "Email or Password Invalid",
@@ -61,7 +60,6 @@ export const loginPage = () => {
                     confirmButtonColor: "#3085d6",
                 });
             } else {
-                console.log("Unexpected error:", error);
                 Swal.fire({
                     title: "Error",
                     text: "Unexpected Error Please Try again",

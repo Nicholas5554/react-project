@@ -20,10 +20,16 @@ export const crm = () => {
             axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token") || "";
             const res = await axios.get("https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users")
             setUsers(res.data);
-            console.log(res.data);
 
         } catch (error) {
-            console.log("error:", error)
+            Swal.fire({
+                title: "Error",
+                text: "Could not get users",
+                icon: "warning",
+                confirmButtonColor: '#3085d6',
+                timer: 1500,
+                timerProgressBar: true
+            });
         }
     }
 
@@ -96,7 +102,6 @@ export const crm = () => {
                     });
 
                 } catch (error) {
-                    console.log(`error:`, error);
                     Swal.fire({
                         title: "Error",
                         text: "Error deleting account try again",

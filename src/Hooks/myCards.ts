@@ -11,17 +11,6 @@ export const myCards = () => {
     const nav = useNavigate();
     const searchWord = useSelector((state: TRootState) => state.searchSlice.search);
 
-    const ToastSweet = Swal.mixin({
-        toast: true,
-        position: "top-right",
-        customClass: {
-            popup: 'colored-toast',
-        },
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true,
-    });
-
 
     const searchCards = () => {
         return cards.filter((item: TCard) => item.title.includes(searchWord.toLocaleLowerCase()));
@@ -72,14 +61,14 @@ export const myCards = () => {
                 setCards(newCards);
             }
         } catch (err) {
-            console.log("error: ", err);
             Swal.fire({
                 title: "Error",
                 text: "could not like/dislike",
                 icon: "error",
-                timer: 1500,
+                showConfirmButton: true,
+                confirmButtonColor: '#3085d6',
                 timerProgressBar: true
-            })
+            });
         }
     }
 
@@ -114,12 +103,13 @@ export const myCards = () => {
             });
             ;
         } catch (error) {
-            console.log(`error:`, error);
-
-            ToastSweet.fire({
-                title: 'Card was not deleted',
+            Swal.fire({
+                title: "Error",
+                text: "could not delete card",
                 icon: "error",
-                toast: true,
+                showConfirmButton: true,
+                confirmButtonColor: '#3085d6',
+                timerProgressBar: true
             });
         }
     };
