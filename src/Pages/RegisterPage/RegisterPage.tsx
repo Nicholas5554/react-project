@@ -170,7 +170,7 @@ const RegisterPage = () => {
                 </div>
             </div>
 
-            <Label htmlFor="isBusiness">is Business?</Label>
+            <Label htmlFor="isBusiness">Business account</Label>
             <Checkbox {...register("isBusiness")} />
             <span className="text-sm text-red-500">{errors.isBusiness?.message}</span>
 
